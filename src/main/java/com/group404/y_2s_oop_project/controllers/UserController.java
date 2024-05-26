@@ -11,6 +11,35 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class UserController {
+    private static String loggedInUsername;
+    
+    public static String getLoggedInUsername() {
+        return loggedInUsername;
+    }
+    
+    public static String getUserFullname() {
+        if (loggedInUsername == null) {
+            return null; 
+        }
+
+        String query = "SELECT customerName FROM customers WHERE customerUsername = ?";
+
+        try (Connection connection = DatabaseUtil.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, loggedInUsername);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                return resultSet.getString("customerName");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null; 
+    }
 
     public static boolean usernameExists(String username) {
         String query = "SELECT COUNT(*) FROM customers WHERE customerUsername = ?";
@@ -93,7 +122,12 @@ public class UserController {
                 String storedPasswordHash = resultSet.getString("customerPassword");
                 String enteredPasswordHash = hashPassword(password);
 
-                return storedPasswordHash.equals(enteredPasswordHash);
+                if (storedPasswordHash.equals(enteredPasswordHash)) {
+                    loggedInUsername = username;
+                    return true;
+                } else {
+                    return false;
+                }
             }
 
         } catch (SQLException e) {

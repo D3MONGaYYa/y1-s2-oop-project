@@ -172,20 +172,20 @@ public class layout_customerOrderSpare extends javax.swing.JPanel {
     }
 
     private void processOrder(String productName, int productQTY) {
-    String quantityStr = JOptionPane.showInputDialog(null, "Enter quantity for " + productName + " (Max QTY " + productQTY + "):");
-    if (quantityStr != null && !quantityStr.isEmpty()) {
-        try {
-            int quantity = Integer.parseInt(quantityStr);
-            if (quantity > productQTY) {
-                JOptionPane.showMessageDialog(null, "Entered quantity exceeds available stock.", "Order Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(null, "Ordered " + quantity + " of " + productName, "Order Placed", JOptionPane.INFORMATION_MESSAGE);
+        String quantityStr = JOptionPane.showInputDialog(null, "Enter quantity for " + productName + " (Max QTY " + productQTY + "):");
+        if (quantityStr != null && !quantityStr.isEmpty()) {
+            try {
+                int quantity = Integer.parseInt(quantityStr);
+                if (quantity > productQTY) {
+                    JOptionPane.showMessageDialog(null, "Entered quantity exceeds available stock.", "Order Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Ordered " + quantity + " of " + productName, "Order Placed", JOptionPane.INFORMATION_MESSAGE);
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Invalid quantity entered.", "Order Error", JOptionPane.ERROR_MESSAGE);
             }
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Invalid quantity entered.", "Order Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-}
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
