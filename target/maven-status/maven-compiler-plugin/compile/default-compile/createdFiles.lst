@@ -7,6 +7,7 @@ com\group404\y_2s_oop_project\views\layout_login$2.class
 com\group404\y_2s_oop_project\views\layout_registerCustomer$2.class
 com\group404\y_2s_oop_project\views\layout_login$1.class
 com\group404\y_2s_oop_project\views\layout_login.class
+com\group404\y_2s_oop_project\views\layout_customerMain.class
 com\group404\y_2s_oop_project\views\layout_registerCustomer$1.class
 com\group404\y_2s_oop_project\App.class
 com\group404\y_2s_oop_project\util\DatabaseUtil.class

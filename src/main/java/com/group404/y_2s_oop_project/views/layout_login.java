@@ -135,6 +135,7 @@ public class layout_login extends javax.swing.JPanel {
 
         if (UserController.validateLogin(txt_username, txt_password)) {
             JOptionPane.showMessageDialog(null, "You have been successfully logged in", "Logged in!", JOptionPane.INFORMATION_MESSAGE);
+            App.openLayout("layout_customerMain", "ShipSharp Main Page");
         } else {
             JOptionPane.showMessageDialog(null, "Invalid username or password", "Login Failed", JOptionPane.ERROR_MESSAGE);
         }      

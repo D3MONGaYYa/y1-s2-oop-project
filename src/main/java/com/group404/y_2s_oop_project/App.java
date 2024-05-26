@@ -20,9 +20,9 @@ public class App {
 
     public static void main(String[] args) {
         FlatLightLaf.setup();
-        openLayout("layout_login", "ShipShape Login Form");
+        //openLayout("layout_login", "ShipShape Login Form");
         // DEBUG PURPOSE
-        // openLayout("layout_registercustomer", "ShipShape Debug Form");
+        openLayout("layout_customerMain", "ShipShape Debug Form");
 
     }
 
@@ -34,15 +34,21 @@ public class App {
 
         frame.getContentPane().removeAll();
 
-        switch (layoutName.toLowerCase()) {
+        switch (layoutName) {
             case "layout_login":
                 layout = new layout_login();
                 break;
-            case "layout_registercustomer":
+            case "layout_registerCustomer":
                 layout = new layout_registerCustomer();
                 sizeX = 850;
                 sizeY = 450;
                 break;
+            case "layout_customerMain":
+                layout = new layout_customerMain();
+                sizeX = 939;
+                sizeY = 383;
+                break;
+                
             default:
                 System.err.println("Layout not found: " + layoutName);
                 return;
