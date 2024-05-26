@@ -79,4 +79,28 @@ public class UserController {
             return null;
         }
     }
+    
+    public static boolean validateLogin(String username, String password) {
+        String query = "SELECT id, customerName, customerUsername, customerPassword, registered_on FROM customers WHERE customerUsername = ?";
+
+        try (Connection connection = DatabaseUtil.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, username);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                String storedPasswordHash = resultSet.getString("customerPassword");
+                String enteredPasswordHash = hashPassword(password);
+
+                return storedPasswordHash.equals(enteredPasswordHash);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
 }

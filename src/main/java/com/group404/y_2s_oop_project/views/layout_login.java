@@ -7,13 +7,8 @@ package com.group404.y_2s_oop_project.views;
 import javax.swing.*;
 
 
-import com.group404.y_2s_oop_project.util.DatabaseUtil;
 import com.group404.y_2s_oop_project.App;
-import static com.group404.y_2s_oop_project.App.openLayout;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import com.group404.y_2s_oop_project.controllers.UserController;
 /**
  *
  * @author D3MON
@@ -138,7 +133,7 @@ public class layout_login extends javax.swing.JPanel {
         String txt_username = input_username.getText();
         String txt_password = input_password.getText();
 
-        if (validateLogin(txt_username, txt_password)) {
+        if (UserController.validateLogin(txt_username, txt_password)) {
             JOptionPane.showMessageDialog(null, "You have been successfully logged in", "Logged in!", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(null, "Invalid username or password", "Login Failed", JOptionPane.ERROR_MESSAGE);
@@ -149,24 +144,6 @@ public class layout_login extends javax.swing.JPanel {
         App.openLayout("layout_registerCustomer", "Register");
     }//GEN-LAST:event_btn_registerMouseClicked
 
-    private boolean validateLogin(String username, String password) {
-        String query = "SELECT id, customerName, customerUsername, customerPassword, registered_on FROM customers WHERE customerUsername = ? AND customerPassword = ?";
-
-        try (Connection connection = DatabaseUtil.getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
-
-            statement.setString(1, username);
-            statement.setString(2, password);
-            ResultSet resultSet = statement.executeQuery();
-
-            return resultSet.next();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return false;
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_login;
