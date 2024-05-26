@@ -52,6 +52,11 @@ public class layout_customerOrderSpare extends javax.swing.JPanel {
         welcomeText.setText("ShipSharp Spare Parts");
 
         jButton1.setText("My Orders");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -82,7 +87,7 @@ public class layout_customerOrderSpare extends javax.swing.JPanel {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -111,12 +116,17 @@ public class layout_customerOrderSpare extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        displayProducts();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void displayProducts() {
         List<Object[]> products = ProductController.fetchProducts();
         String[] columnNames = {"Product ID", "Product Name", "Price", "Stock", "Order"};
         DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 
         for (Object[] product : products) {
+//            System.out.print(product.productId);
             tableModel.addRow(product);
         }
 
@@ -161,11 +171,13 @@ public class layout_customerOrderSpare extends javax.swing.JPanel {
 
         public Object getCellEditorValue() {
             if (isPushed) {
-                int rowIndex = productListTable.getSelectedRow();
-                int productID = (int) productListTable.getValueAt(rowIndex, 0);
-                String productName = (String) productListTable.getValueAt(rowIndex, 1);
-                int productQTY = (int) productListTable.getValueAt(rowIndex, 3);
-                processOrder(productName, productQTY, productID);
+                int rowIndex = productListTable.getEditingRow();
+                if (rowIndex >= 0 && rowIndex < productListTable.getRowCount()) {
+                    int productID = Integer.parseInt(productListTable.getValueAt(rowIndex, 0).toString());
+                    String productName = productListTable.getValueAt(rowIndex, 1).toString();
+                    int productQTY = Integer.parseInt(productListTable.getValueAt(rowIndex, 3).toString());
+                    SwingUtilities.invokeLater(() -> processOrder(productName, productQTY, productID));
+                }
             }
             isPushed = false;
             return label;
@@ -189,18 +201,23 @@ public class layout_customerOrderSpare extends javax.swing.JPanel {
                 if (quantity > productQTY) {
                     JOptionPane.showMessageDialog(null, "Entered quantity exceeds available stock.", "Order Error", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    if(ProductController.createOrder(productName, quantity, productID)){
+                    if (ProductController.createOrder(productName, quantity, productID)) {
                         JOptionPane.showMessageDialog(null, "Ordered " + quantity + " of " + productName, "Order Placed", JOptionPane.INFORMATION_MESSAGE);
-                        displayProducts();
+                        refreshPage();
                     } else {
                         JOptionPane.showMessageDialog(null, "Order Placing SQL Error", "Order Error", JOptionPane.ERROR_MESSAGE);
                     }
-                    
                 }
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Invalid quantity entered.", "Order Error", JOptionPane.ERROR_MESSAGE);
             }
         }
+    }
+
+    
+    private void refreshPage(){
+        System.out.print("Products Refreshed !");
+        displayProducts();
     }
 
     
