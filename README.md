@@ -38,14 +38,7 @@ This repository contains the source code for an automated system developed for S
 - Upon launching the application, users can navigate through the different modules using the GUI interface.
 - Users can perform CRUD operations on customer orders, suppliers, employees, etc., depending on their roles and permissions.
 - Reports can be generated monthly to analyze sales performance.
-- Notifications will be sent automatically to customers and employees based on predefined triggers.
-
-## Contribution Guidelines
-1. Fork the repository to your GitHub account.
-2. Create a new branch for each feature or bug fix.
-3. Commit your changes with clear and descriptive messages.
-4. Push your changes to your fork.
-5. Submit a pull request to the main repository, explaining the changes made and the problem solved.
+- Notifications will be sent automatically to customers and employees usinG SMTP.
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
