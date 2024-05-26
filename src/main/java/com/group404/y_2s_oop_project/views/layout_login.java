@@ -141,7 +141,7 @@ public class layout_login extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_loginActionPerformed
 
     private void btn_registerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_registerMouseClicked
-        App.openLayout("layout_registerCustomer", "Register");
+        App.openLayout("layout_registerCustomer", "Register User");
     }//GEN-LAST:event_btn_registerMouseClicked
 
 

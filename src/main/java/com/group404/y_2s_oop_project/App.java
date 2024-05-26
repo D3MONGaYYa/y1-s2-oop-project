@@ -20,9 +20,9 @@ public class App {
 
     public static void main(String[] args) {
         FlatLightLaf.setup();
-        //openLayout("layout_login", "ShipShape Login Form");
+        openLayout("layout_login", "ShipShape Login Form");
         // DEBUG PURPOSE
-        openLayout("layout_registercustomer", "ShipShape Debug Form");
+        // openLayout("layout_registercustomer", "ShipShape Debug Form");
 
     }
 
