@@ -19,9 +19,9 @@
           <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
-              <Component id="btn_orderSpareParts1" min="-2" pref="241" max="-2" attributes="0"/>
-              <EmptySpace pref="205" max="32767" attributes="0"/>
               <Component id="btn_orderSpareParts" min="-2" pref="241" max="-2" attributes="0"/>
+              <EmptySpace pref="205" max="32767" attributes="0"/>
+              <Component id="btn_reqeustService" min="-2" pref="241" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -32,8 +32,8 @@
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="101" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btn_reqeustService" alignment="3" min="-2" pref="114" max="-2" attributes="0"/>
                   <Component id="btn_orderSpareParts" alignment="3" min="-2" pref="114" max="-2" attributes="0"/>
-                  <Component id="btn_orderSpareParts1" alignment="3" min="-2" pref="114" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
           </Group>
@@ -78,7 +78,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="btn_orderSpareParts">
+    <Component class="javax.swing.JButton" name="btn_reqeustService">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="cc" type="rgb"/>
@@ -93,7 +93,7 @@
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btn_orderSpareParts1">
+    <Component class="javax.swing.JButton" name="btn_orderSpareParts">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="cc" type="rgb"/>

@@ -28,8 +28,8 @@ public class layout_customerMain extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         welcomeText = new javax.swing.JLabel();
+        btn_reqeustService = new javax.swing.JButton();
         btn_orderSpareParts = new javax.swing.JButton();
-        btn_orderSpareParts1 = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(204, 0, 0));
 
@@ -51,17 +51,17 @@ public class layout_customerMain extends javax.swing.JPanel {
             .addComponent(welcomeText, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
         );
 
+        btn_reqeustService.setBackground(new java.awt.Color(204, 0, 0));
+        btn_reqeustService.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btn_reqeustService.setForeground(new java.awt.Color(255, 255, 255));
+        btn_reqeustService.setText("Request Service");
+        btn_reqeustService.setToolTipText("");
+
         btn_orderSpareParts.setBackground(new java.awt.Color(204, 0, 0));
         btn_orderSpareParts.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btn_orderSpareParts.setForeground(new java.awt.Color(255, 255, 255));
-        btn_orderSpareParts.setText("Request Service");
+        btn_orderSpareParts.setText("Order Spare Parts");
         btn_orderSpareParts.setToolTipText("");
-
-        btn_orderSpareParts1.setBackground(new java.awt.Color(204, 0, 0));
-        btn_orderSpareParts1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btn_orderSpareParts1.setForeground(new java.awt.Color(255, 255, 255));
-        btn_orderSpareParts1.setText("Order Spare Parts");
-        btn_orderSpareParts1.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -70,9 +70,9 @@ public class layout_customerMain extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(119, 119, 119)
-                .addComponent(btn_orderSpareParts1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
                 .addComponent(btn_orderSpareParts, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
+                .addComponent(btn_reqeustService, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(133, 133, 133))
         );
         layout.setVerticalGroup(
@@ -81,8 +81,8 @@ public class layout_customerMain extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_orderSpareParts, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_orderSpareParts1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_reqeustService, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_orderSpareParts, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(80, 80, 80))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -90,7 +90,7 @@ public class layout_customerMain extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_orderSpareParts;
-    private javax.swing.JButton btn_orderSpareParts1;
+    private javax.swing.JButton btn_reqeustService;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel welcomeText;
     // End of variables declaration//GEN-END:variables
