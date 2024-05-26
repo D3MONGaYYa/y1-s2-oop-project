@@ -11,7 +11,9 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class UserController {
-    private static String loggedInUsername;
+    //private static String loggedInUsername;
+    // Debug Purpose
+    private static String loggedInUsername = "customer";
     
     public static String getLoggedInUsername() {
         return loggedInUsername;

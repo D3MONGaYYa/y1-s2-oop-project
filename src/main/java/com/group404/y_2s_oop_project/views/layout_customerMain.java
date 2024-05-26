@@ -4,6 +4,8 @@
  */
 package com.group404.y_2s_oop_project.views;
 
+import com.group404.y_2s_oop_project.App;
+import com.group404.y_2s_oop_project.controllers.UserController;
 /**
  *
  * @author D3MON
@@ -15,7 +17,7 @@ public class layout_customerMain extends javax.swing.JPanel {
      */
     public layout_customerMain() {
         initComponents();
-        user_txtFullName.setText("test");
+        user_txtFullName.setText("Welcome "+UserController.getUserFullname()+" to ShipSharp Customer Portal");
     }
 
     /**
@@ -39,6 +41,8 @@ public class layout_customerMain extends javax.swing.JPanel {
         welcomeText.setForeground(new java.awt.Color(255, 255, 255));
         welcomeText.setText("Welcome to ShipSharp");
 
+        user_txtFullName.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        user_txtFullName.setForeground(new java.awt.Color(255, 255, 255));
         user_txtFullName.setText("[fullname]");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -46,11 +50,11 @@ public class layout_customerMain extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(214, Short.MAX_VALUE)
                 .addComponent(welcomeText)
                 .addGap(218, 218, 218))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(439, 439, 439)
+                .addContainerGap()
                 .addComponent(user_txtFullName)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -58,9 +62,9 @@ public class layout_customerMain extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(welcomeText, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(user_txtFullName)
-                .addGap(0, 7, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         btn_reqeustService.setBackground(new java.awt.Color(204, 0, 0));
@@ -74,6 +78,11 @@ public class layout_customerMain extends javax.swing.JPanel {
         btn_orderSpareParts.setForeground(new java.awt.Color(255, 255, 255));
         btn_orderSpareParts.setText("Order Spare Parts");
         btn_orderSpareParts.setToolTipText("");
+        btn_orderSpareParts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_orderSparePartsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -91,13 +100,17 @@ public class layout_customerMain extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_reqeustService, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_orderSpareParts, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(80, 80, 80))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_orderSparePartsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_orderSparePartsActionPerformed
+        App.openLayout("layout_customerOrderSpare", "Order Spare Parts");
+    }//GEN-LAST:event_btn_orderSparePartsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

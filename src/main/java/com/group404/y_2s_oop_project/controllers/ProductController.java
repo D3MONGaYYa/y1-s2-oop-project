@@ -29,7 +29,7 @@ public class ProductController {
                 double productPrice = resultSet.getDouble("productPrice");
                 int productStock = resultSet.getInt("productStock");
 
-                products.add(new Object[]{productName, productPrice, productStock, "Order"});
+                products.add(new Object[]{productId, productName, productPrice, productStock, "Order"});
             }
 
         } catch (SQLException e) {
@@ -37,6 +37,46 @@ public class ProductController {
         }
 
         return products;
+    }
+    
+    public static boolean createOrder(String productName, int quantity, int productID) {
+        String sql = "INSERT INTO orders (customer_username, product_ID, product_name, quantity) VALUES (?,?, ?, ?)";
+
+        try (Connection conn = DatabaseUtil.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, UserController.getLoggedInUsername());
+            pstmt.setInt(2, productID);
+            pstmt.setString(3, productName);
+            pstmt.setInt(4, quantity);
+
+            pstmt.executeUpdate();
+            
+            stockUpdate(productName, quantity, productID);
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    private static void stockUpdate(String productName, int quantity, int productID) {
+        String sql = "UPDATE products SET productStock = productStock - ? WHERE id = ?";
+
+        try (Connection conn = DatabaseUtil.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, quantity);
+            pstmt.setInt(2, productID);
+
+            pstmt.executeUpdate();
+            System.out.println("Stock Updated !");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Stock Updated Failed !");
+        }
     }
 
 }
