@@ -94,6 +94,11 @@ public class layout_customerOrderSpare extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
+        productListTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                productListTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(productListTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -120,13 +125,19 @@ public class layout_customerOrderSpare extends javax.swing.JPanel {
         displayProducts();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void productListTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productListTableMouseClicked
+        int column = productListTable.columnAtPoint(evt.getPoint());
+        if (column != productListTable.getColumn("Order").getModelIndex()) {
+            JOptionPane.showMessageDialog(null, "No Access to edit cell.", "No Access", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_productListTableMouseClicked
+
     private void displayProducts() {
         List<Object[]> products = ProductController.fetchProducts();
         String[] columnNames = {"Product ID", "Product Name", "Price", "Stock", "Order"};
         DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 
         for (Object[] product : products) {
-//            System.out.print(product.productId);
             tableModel.addRow(product);
         }
 
