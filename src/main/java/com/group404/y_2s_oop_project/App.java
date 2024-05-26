@@ -29,7 +29,7 @@ public class App {
     public static void openLayout(String layoutName, String title) {
         JPanel layout = null;
         Integer sizeX = 860;
-        Integer sizeY = 860;
+        Integer sizeY = 500;
 
 
         frame.getContentPane().removeAll();

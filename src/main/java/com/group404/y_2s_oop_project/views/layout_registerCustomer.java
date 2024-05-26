@@ -5,7 +5,8 @@
 package com.group404.y_2s_oop_project.views;
 
 import com.group404.y_2s_oop_project.App;
-import javax.swing.JOptionPane;
+import com.group404.y_2s_oop_project.controllers.UserController;
+import javax.swing.*;
 
 /**
  *
@@ -150,12 +151,22 @@ public class layout_registerCustomer extends javax.swing.JPanel {
         String txt_email = input_email.getText();
         String txt_username = input_username.getText();
         String txt_password = input_password.getText();
-        
-        JOptionPane.showMessageDialog(null, txt_fullname + txt_email + txt_username + txt_password , "Data Debug", JOptionPane.ERROR_MESSAGE);
 
+        if (txt_fullname.isEmpty() || txt_email.isEmpty() || txt_username.isEmpty() || txt_password.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please fill in all fields", "Registration Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (UserController.registerCustomer(txt_fullname, txt_email, txt_username, txt_password)) {
+            JOptionPane.showMessageDialog(null, "Registration successful", "Success", JOptionPane.INFORMATION_MESSAGE);
+            App.openLayout("layout_login", "Login User");
+        } else {
+            JOptionPane.showMessageDialog(null, "Failed to register", "Registration Error", JOptionPane.ERROR_MESSAGE);
+        }
         
     }//GEN-LAST:event_btn_registerActionPerformed
 
+    
     private void btn_loginNavigationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginNavigationMouseClicked
         App.openLayout("layout_login", "Login User");
     }//GEN-LAST:event_btn_loginNavigationMouseClicked
