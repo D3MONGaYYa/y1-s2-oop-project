@@ -21,6 +21,7 @@ com\group404\y_2s_oop_project\views\layout_customerOrderSpare$1.class
 com\group404\y_2s_oop_project\views\layout_login.class
 com\group404\y_2s_oop_project\views\layout_registerCustomer$1.class
 com\group404\y_2s_oop_project\controllers\ProductController.class
+com\group404\y_2s_oop_project\controllers\EmployeeController.class
 com\group404\y_2s_oop_project\views\layout_customerMain$2.class
 com\group404\y_2s_oop_project\views\layout_customerOrderSpare$ButtonEditor$1.class
 com\group404\y_2s_oop_project\views\layout_customerOrderSpare$3.class

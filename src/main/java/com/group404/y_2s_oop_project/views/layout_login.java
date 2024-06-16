@@ -9,6 +9,8 @@ import javax.swing.*;
 
 import com.group404.y_2s_oop_project.App;
 import com.group404.y_2s_oop_project.controllers.UserController;
+import com.group404.y_2s_oop_project.controllers.EmployeeController;
+
 /**
  *
  * @author D3MON
@@ -136,13 +138,18 @@ public class layout_login extends javax.swing.JPanel {
         
         if (loginType == "Customer") {
             if (UserController.validateLogin(txt_username, txt_password)) {
-                JOptionPane.showMessageDialog(null, "You have been successfully logged in", "Logged in!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "You have been successfully logged in as Customer", "Logged in!", JOptionPane.INFORMATION_MESSAGE);
                 App.openLayout("layout_customerMain", "ShipSharp Main Page");
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid username or password", "Login Failed", JOptionPane.ERROR_MESSAGE);
             }  
         } else if (loginType == "Employee") {
-            
+            if (EmployeeController.validateLogin(txt_username, txt_password)) {
+                JOptionPane.showMessageDialog(null, "You have been successfully logged in as Employee", "Logged in!", JOptionPane.INFORMATION_MESSAGE);
+//                App.openLayout("layout_customerMain", "ShipSharp Main Page");
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid username or password", "Login Failed", JOptionPane.ERROR_MESSAGE);
+            } 
         } else if (loginType == "Admin") {
             
         } else {
