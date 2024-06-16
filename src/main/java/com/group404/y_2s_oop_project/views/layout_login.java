@@ -132,13 +132,23 @@ public class layout_login extends javax.swing.JPanel {
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         String txt_username = input_username.getText();
         String txt_password = input_password.getText();
-
-        if (UserController.validateLogin(txt_username, txt_password)) {
-            JOptionPane.showMessageDialog(null, "You have been successfully logged in", "Logged in!", JOptionPane.INFORMATION_MESSAGE);
-            App.openLayout("layout_customerMain", "ShipSharp Main Page");
+        String loginType = String.valueOf(input_role.getSelectedItem());
+        
+        if (loginType == "Customer") {
+            if (UserController.validateLogin(txt_username, txt_password)) {
+                JOptionPane.showMessageDialog(null, "You have been successfully logged in", "Logged in!", JOptionPane.INFORMATION_MESSAGE);
+                App.openLayout("layout_customerMain", "ShipSharp Main Page");
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid username or password", "Login Failed", JOptionPane.ERROR_MESSAGE);
+            }  
+        } else if (loginType == "Employee") {
+            
+        } else if (loginType == "Admin") {
+            
         } else {
-            JOptionPane.showMessageDialog(null, "Invalid username or password", "Login Failed", JOptionPane.ERROR_MESSAGE);
-        }      
+            JOptionPane.showMessageDialog(null, "Invalid login type", "Login Failed", JOptionPane.ERROR_MESSAGE);
+        }
+              
     }//GEN-LAST:event_btn_loginActionPerformed
 
     private void btn_registerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_registerMouseClicked

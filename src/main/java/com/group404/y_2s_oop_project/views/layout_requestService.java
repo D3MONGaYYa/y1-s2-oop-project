@@ -115,14 +115,23 @@ public class layout_requestService extends javax.swing.JPanel {
         String req_service = String.valueOf(service_dropdown.getSelectedItem());
         String req_txtdescription = req_description.getText();
         
+        if (req_service.isEmpty() || req_txtdescription.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "All inputs must need a value", "Error Occured", JOptionPane.ERROR_MESSAGE);
+            return;
+        }   
+        
         if(serviceRequestController.createRequest(req_service, req_txtdescription)){
-            JOptionPane.showMessageDialog(null, "Done", "Done", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Service Requested Successfully !", "Service Requested", JOptionPane.INFORMATION_MESSAGE);
+            clearAreas();
         } else {
-            JOptionPane.showMessageDialog(null, "Error", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Service Requesting Failed", "Error Occured", JOptionPane.ERROR_MESSAGE);
         }
         
     }//GEN-LAST:event_btn_requestServiceActionPerformed
 
+    private void clearAreas() {
+        req_description.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_requestService;
