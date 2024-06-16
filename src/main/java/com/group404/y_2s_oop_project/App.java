@@ -52,6 +52,10 @@ public class App {
                 layout = new layout_customerOrderSpare();
                 break;
                 
+            case "layout_requestService":
+                layout = new layout_requestService();
+                break;
+                
             default:
                 System.err.println("Layout not found: " + layoutName);
                 return;

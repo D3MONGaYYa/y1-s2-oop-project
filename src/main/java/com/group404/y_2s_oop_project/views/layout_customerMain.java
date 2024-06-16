@@ -72,6 +72,11 @@ public class layout_customerMain extends javax.swing.JPanel {
         btn_reqeustService.setForeground(new java.awt.Color(255, 255, 255));
         btn_reqeustService.setText("Request Service");
         btn_reqeustService.setToolTipText("");
+        btn_reqeustService.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_reqeustServiceActionPerformed(evt);
+            }
+        });
 
         btn_orderSpareParts.setBackground(new java.awt.Color(204, 0, 0));
         btn_orderSpareParts.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -111,6 +116,10 @@ public class layout_customerMain extends javax.swing.JPanel {
     private void btn_orderSparePartsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_orderSparePartsActionPerformed
         App.openLayout("layout_customerOrderSpare", "Order Spare Parts");
     }//GEN-LAST:event_btn_orderSparePartsActionPerformed
+
+    private void btn_reqeustServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reqeustServiceActionPerformed
+        App.openLayout("layout_requestService", "Request Services");
+    }//GEN-LAST:event_btn_reqeustServiceActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
