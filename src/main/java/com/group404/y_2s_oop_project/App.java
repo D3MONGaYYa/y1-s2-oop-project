@@ -56,6 +56,14 @@ public class App {
                 layout = new layout_requestService();
                 break;
                 
+            case "layout_employeeMain":
+                layout = new layout_employeeMain();
+                break;
+                
+            case "layout_employeeOrders":
+                layout = new layout_employeeOrders();
+                break;
+                
             default:
                 System.err.println("Layout not found: " + layoutName);
                 return;

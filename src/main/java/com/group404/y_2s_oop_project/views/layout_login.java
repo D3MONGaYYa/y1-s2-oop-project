@@ -146,7 +146,7 @@ public class layout_login extends javax.swing.JPanel {
         } else if (loginType == "Employee") {
             if (EmployeeController.validateLogin(txt_username, txt_password)) {
                 JOptionPane.showMessageDialog(null, "You have been successfully logged in as Employee", "Logged in!", JOptionPane.INFORMATION_MESSAGE);
-//                App.openLayout("layout_customerMain", "ShipSharp Main Page");
+                App.openLayout("layout_employeeMain", "ShipSharp Employee Main Page");
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid username or password", "Login Failed", JOptionPane.ERROR_MESSAGE);
             } 
