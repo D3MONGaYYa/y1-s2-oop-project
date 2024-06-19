@@ -20,11 +20,19 @@ public class UserController {
     }
     
     public static String getUserFullname() {
+        return getUserData("customerName");
+    }
+    
+    public static String getEmail() {
+        return getUserData("customerEmail");
+    }
+    
+    public static String getUserData(String element) {
         if (loggedInUsername == null) {
             return null; 
         }
 
-        String query = "SELECT customerName FROM customers WHERE customerUsername = ?";
+        String query = "SELECT * FROM customers WHERE customerUsername = ?";
 
         try (Connection connection = DatabaseUtil.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
@@ -33,7 +41,7 @@ public class UserController {
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-                return resultSet.getString("customerName");
+                return resultSet.getString(element);
             }
 
         } catch (SQLException e) {

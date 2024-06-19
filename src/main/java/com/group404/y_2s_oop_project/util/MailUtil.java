@@ -20,7 +20,7 @@ public class MailUtil {
     private static final String SMTP_STARTTLS = "true";
 
     private static final String USERNAME = "admin@shipsharp.xyz"; 
-    private static final String PASSWORD = "Ganidubro5@"; 
+    private static final String PASSWORD = "-at5eqkU"; 
 
     private static Session session;
 
@@ -43,7 +43,7 @@ public class MailUtil {
         try {
             Message message = new MimeMessage(session);
 
-            message.setFrom(new InternetAddress(USERNAME));
+            message.setFrom(new InternetAddress(USERNAME, "ShipSharp Support"));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
             message.setSubject(subject);
 
@@ -56,12 +56,39 @@ public class MailUtil {
 
             Transport.send(message);
 
-            System.out.println("Email sent successfully to " + toEmail);
+            System.out.println("Order placed email sent successfully to " + toEmail);
 
         } catch (MessagingException e) {
+            e.printStackTrace();
+        } catch (java.io.UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public static void sendServiceRequested(String toEmail, String service, String desc) {
+        try {
+            Message message = new MimeMessage(session);
+
+            message.setFrom(new InternetAddress(USERNAME, "ShipSharp Support"));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
+            message.setSubject("Service Requested");
+
+            String msgContent = "Your service request has been recieved !!!\n\n"
+                    + "Service: " + service + "\n"
+                    + "Description: " + desc + "\n\n"
+                    + "Thank you for using our service.";
+
+            message.setText(msgContent);
+
+            Transport.send(message);
+
+            System.out.println("Service request email sent successfully to " + toEmail);
+
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        } catch (java.io.UnsupportedEncodingException e) {
             e.printStackTrace();
         }
     }
 
-   
 }

@@ -5,6 +5,7 @@
 package com.group404.y_2s_oop_project.views;
 import com.group404.y_2s_oop_project.App;
 import com.group404.y_2s_oop_project.controllers.ProductController;
+import com.group404.y_2s_oop_project.controllers.orderController;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
@@ -213,7 +214,7 @@ public class layout_customerOrderSpare extends javax.swing.JPanel {
                 if (quantity > productQTY) {
                     JOptionPane.showMessageDialog(null, "Entered quantity exceeds available stock.", "Order Error", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    if (ProductController.createOrder(productName, quantity, productID)) {
+                    if (orderController.createOrder(productName, quantity, productID)) {
                         JOptionPane.showMessageDialog(null, "Ordered " + quantity + " of " + productName, "Order Placed", JOptionPane.INFORMATION_MESSAGE);
                         refreshPage();
                     } else {

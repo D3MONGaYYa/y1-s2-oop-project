@@ -5,6 +5,7 @@
 package com.group404.y_2s_oop_project.controllers;
 
 import com.group404.y_2s_oop_project.util.DatabaseUtil;
+import com.group404.y_2s_oop_project.util.MailUtil;
 import com.group404.y_2s_oop_project.controllers.UserController;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,7 +28,7 @@ public class serviceRequestController {
             statement.setString(2, service);            
             statement.setString(3, desc);
             int rowsInserted = statement.executeUpdate();
-
+            MailUtil.sendServiceRequested(UserController.getEmail(), service, desc);
             return rowsInserted > 0;
 
         } catch (SQLException e) {

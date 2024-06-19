@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JFrame;
 
 import com.formdev.flatlaf.*;
+import com.group404.y_2s_oop_project.util.MailUtil;
 
 
 /**

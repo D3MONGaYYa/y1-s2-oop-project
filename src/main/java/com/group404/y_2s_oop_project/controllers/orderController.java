@@ -4,6 +4,7 @@
  */
 package com.group404.y_2s_oop_project.controllers;
 import com.group404.y_2s_oop_project.util.DatabaseUtil;
+import com.group404.y_2s_oop_project.util.MailUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -58,5 +59,29 @@ public class orderController {
             return false;
         }
     }
+    
+    public static boolean createOrder(String productName, int quantity, int productID) {
+        String sql = "INSERT INTO orders (customer_username, product_ID, product_name, quantity) VALUES (?,?, ?, ?)";
+
+        try (Connection conn = DatabaseUtil.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, UserController.getLoggedInUsername());
+            pstmt.setInt(2, productID);
+            pstmt.setString(3, productName);
+            pstmt.setInt(4, quantity);
+
+            pstmt.executeUpdate();
+            
+            ProductController.stockUpdate(productName, quantity, productID);
+            MailUtil.sendOrderPlacedMail(UserController.getEmail(), "Order Placed", productName, "$100");
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
 
 }
