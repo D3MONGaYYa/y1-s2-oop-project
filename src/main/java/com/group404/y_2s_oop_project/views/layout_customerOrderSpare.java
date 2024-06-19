@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.group404.y_2s_oop_project.views;
+import com.group404.y_2s_oop_project.App;
 import com.group404.y_2s_oop_project.controllers.ProductController;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -51,7 +52,7 @@ public class layout_customerOrderSpare extends javax.swing.JPanel {
         welcomeText.setForeground(new java.awt.Color(255, 255, 255));
         welcomeText.setText("ShipSharp Spare Parts");
 
-        jButton1.setText("My Orders");
+        jButton1.setText("Main Menu");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -65,7 +66,7 @@ public class layout_customerOrderSpare extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
                 .addComponent(welcomeText)
                 .addGap(218, 218, 218))
         );
@@ -122,7 +123,7 @@ public class layout_customerOrderSpare extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        displayProducts();
+        App.openLayout("layout_customerMain", "Customer Main Menu");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void productListTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productListTableMouseClicked

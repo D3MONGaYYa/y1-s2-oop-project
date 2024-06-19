@@ -4,6 +4,7 @@
  */
 package com.group404.y_2s_oop_project.views;
 
+import com.group404.y_2s_oop_project.App;
 import com.group404.y_2s_oop_project.controllers.serviceRequestController;
 import javax.swing.JOptionPane;
 /**
@@ -31,6 +32,7 @@ public class layout_requestService extends javax.swing.JPanel {
         btn_requestService = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         topText = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         service_dropdown = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -51,20 +53,31 @@ public class layout_requestService extends javax.swing.JPanel {
         topText.setForeground(new java.awt.Color(255, 255, 255));
         topText.setText("ShipSharp Service Request");
 
+        jButton1.setText("Main Menu");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(100, 100, 100)
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addGap(19, 19, 19)
                 .addComponent(topText)
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(18, Short.MAX_VALUE)
-                .addComponent(topText)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(topText)
+                    .addComponent(jButton1))
                 .addContainerGap())
         );
 
@@ -129,12 +142,17 @@ public class layout_requestService extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btn_requestServiceActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        App.openLayout("layout_customerMain", "Customer Main Men");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void clearAreas() {
         req_description.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_requestService;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

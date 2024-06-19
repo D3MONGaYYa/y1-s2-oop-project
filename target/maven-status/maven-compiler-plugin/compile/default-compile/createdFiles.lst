@@ -17,14 +17,17 @@ com\group404\y_2s_oop_project\views\layout_employeeOrders$ButtonEditor.class
 com\group404\y_2s_oop_project\views\layout_customerOrderSpare$2.class
 com\group404\y_2s_oop_project\util\DatabaseUtil.class
 com\group404\y_2s_oop_project\views\layout_employeeMain$2.class
+com\group404\y_2s_oop_project\util\MailUtil$1.class
 com\group404\y_2s_oop_project\views\layout_registerCustomer.class
 com\group404\y_2s_oop_project\views\layout_customerMain$1.class
 com\group404\y_2s_oop_project\views\layout_customerOrderSpare$ButtonEditor.class
 com\group404\y_2s_oop_project\views\layout_login$3.class
 com\group404\y_2s_oop_project\views\layout_registerCustomer$3.class
 com\group404\y_2s_oop_project\views\layout_registerCustomer$5.class
+com\group404\y_2s_oop_project\util\MailUtil.class
 com\group404\y_2s_oop_project\views\layout_login$1.class
 com\group404\y_2s_oop_project\views\layout_customerOrderSpare$1.class
+com\group404\y_2s_oop_project\views\layout_requestService$2.class
 com\group404\y_2s_oop_project\views\layout_login.class
 com\group404\y_2s_oop_project\views\layout_registerCustomer$1.class
 com\group404\y_2s_oop_project\views\layout_employeeMain$1.class
