@@ -32,6 +32,7 @@ public class layout_adminMain extends javax.swing.JPanel {
         welcomeText = new javax.swing.JLabel();
         btn_employeeManagment = new javax.swing.JButton();
         btn_employeeManagment1 = new javax.swing.JButton();
+        btn_manageServices = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(731, 88));
@@ -76,20 +77,38 @@ public class layout_adminMain extends javax.swing.JPanel {
             }
         });
 
+        btn_manageServices.setBackground(new java.awt.Color(0, 102, 255));
+        btn_manageServices.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btn_manageServices.setForeground(new java.awt.Color(255, 255, 255));
+        btn_manageServices.setText("MANAGE SERVICES");
+        btn_manageServices.setToolTipText("");
+        btn_manageServices.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_manageServicesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 855, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(67, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_employeeManagment, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_employeeManagment1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(471, 471, 471))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 855, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 61, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btn_employeeManagment1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(471, 471, 471))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btn_employeeManagment, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_manageServices, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(59, 59, 59))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,7 +116,9 @@ public class layout_adminMain extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addComponent(btn_employeeManagment)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_employeeManagment)
+                    .addComponent(btn_manageServices))
                 .addGap(18, 18, 18)
                 .addComponent(btn_employeeManagment1)
                 .addContainerGap(79, Short.MAX_VALUE))
@@ -112,10 +133,15 @@ public class layout_adminMain extends javax.swing.JPanel {
         App.openLayout("layout_adminEmployeeList", "Emplyoee Management");
     }//GEN-LAST:event_btn_employeeManagment1ActionPerformed
 
+    private void btn_manageServicesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_manageServicesActionPerformed
+        App.openLayout("layout_adminManageServiceRequests", "Manage Service Requests");
+    }//GEN-LAST:event_btn_manageServicesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_employeeManagment;
     private javax.swing.JButton btn_employeeManagment1;
+    private javax.swing.JButton btn_manageServices;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel welcomeText;
     // End of variables declaration//GEN-END:variables
