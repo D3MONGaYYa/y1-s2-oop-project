@@ -87,35 +87,37 @@ public class layout_adminManageServiceRequests extends javax.swing.JPanel {
                     int requestId = (int) jTable1.getValueAt(selectedRow, 0);
 
                     if (label.equals("Allocate")) {
-                        List<Object[]> employees = EmployeeController.fetchEmployees();
+                        SwingUtilities.invokeLater(() -> {
+                            List<Object[]> employees = EmployeeController.fetchEmployees();
 
-                        JComboBox<String> employeeComboBox = new JComboBox<>();
-                        for (Object[] employee : employees) {
-                            employeeComboBox.addItem(employee[3].toString()); 
-                        }
-
-                        int option = JOptionPane.showOptionDialog(null, employeeComboBox,
-                                "Select Employee to Allocate", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
-                                null, null, null);
-
-                        if (option == JOptionPane.OK_OPTION) {
-                            String selectedFullName = (String) employeeComboBox.getSelectedItem();
-
-                            int selectedEmployeeId = -1;
+                            JComboBox<String> employeeComboBox = new JComboBox<>();
                             for (Object[] employee : employees) {
-                                if (selectedFullName.equals(employee[1].toString())) { 
-                                    selectedEmployeeId = (int) employee[0];
-                                    break;
+                                employeeComboBox.addItem(employee[3].toString()); 
+                            }
+
+                            int option = JOptionPane.showOptionDialog(null, employeeComboBox,
+                                    "Select Employee to Allocate", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
+                                    null, null, null);
+
+                            if (option == JOptionPane.OK_OPTION) {
+                                String selectedFullName = (String) employeeComboBox.getSelectedItem();
+
+                                int selectedEmployeeId = -1;
+                                for (Object[] employee : employees) {
+                                    if (selectedFullName.equals(employee[3].toString())) { 
+                                        selectedEmployeeId = (int) employee[0];
+                                        break;
+                                    }
+                                }
+
+                                if (selectedEmployeeId != -1 && serviceRequestController.allocateEmployeeToRequest(requestId, selectedEmployeeId)) {
+                                    JOptionPane.showMessageDialog(null, "Employee allocated successfully.");
+                                    displayRequests(); 
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Failed to allocate employee.");
                                 }
                             }
-
-                            if (selectedEmployeeId != -1 && serviceRequestController.allocateEmployeeToRequest(requestId, selectedEmployeeId)) {
-                                JOptionPane.showMessageDialog(null, "Employee allocated successfully.");
-                                displayRequests(); 
-                            } else {
-                                JOptionPane.showMessageDialog(null, "Failed to allocate employee.");
-                            }
-                        }
+                        });
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "No row selected.", "Error", JOptionPane.ERROR_MESSAGE);
