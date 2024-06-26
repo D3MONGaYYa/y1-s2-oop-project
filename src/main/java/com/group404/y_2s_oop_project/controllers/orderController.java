@@ -83,5 +83,22 @@ public class orderController {
         }
     }
     
+    public static boolean removeOrder(int orderId) {
+        String sql = "DELETE FROM orders WHERE id = ?";
+        try (Connection conn = DatabaseUtil.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, orderId);
+
+            int affectedRows = pstmt.executeUpdate();
+            return affectedRows > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    
 
 }

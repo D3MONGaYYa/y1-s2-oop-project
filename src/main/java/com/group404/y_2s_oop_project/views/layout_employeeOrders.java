@@ -28,11 +28,13 @@ public class layout_employeeOrders extends javax.swing.JPanel {
     
     private void displayOrders() {
         List<Object[]> orders = orderController.fetchOrders();
-        String[] columnNames = {"Order ID", "Customer Username", "Product ID", "Product Name", "Quantity", "Created On", "Status", "Accept", "Reject"};
+        String[] columnNames = {"Order ID", "Customer Username", "Product ID", "Product Name", "Quantity", "Created On", "Status", "Accept", "Reject", "Remove"};
         DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 
         for (Object[] order : orders) {
-            tableModel.addRow(order);
+            Object[] rowData = new Object[order.length + 1]; 
+            System.arraycopy(order, 0, rowData, 0, order.length);
+            tableModel.addRow(rowData);
         }
 
         tbl_orders.setModel(tableModel);
@@ -40,16 +42,19 @@ public class layout_employeeOrders extends javax.swing.JPanel {
         tbl_orders.getColumn("Accept").setCellEditor(new ButtonEditor(new JCheckBox(), "Accept"));
         tbl_orders.getColumn("Reject").setCellRenderer(new ButtonRenderer("Reject"));
         tbl_orders.getColumn("Reject").setCellEditor(new ButtonEditor(new JCheckBox(), "Reject"));
+        tbl_orders.getColumn("Remove").setCellRenderer(new ButtonRenderer("Remove"));
+        tbl_orders.getColumn("Remove").setCellEditor(new ButtonEditor(new JCheckBox(), "Remove"));
     }
+
 
     class ButtonRenderer extends JButton implements TableCellRenderer {
         public ButtonRenderer(String label) {
             setText(label);
             setOpaque(true);
         }
-
+        
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-            setText((value == null) ? "" : value.toString());
+            setText((value == null) ? "11" : value.toString());
             return this;
         }
     }
@@ -73,7 +78,6 @@ public class layout_employeeOrders extends javax.swing.JPanel {
         }
 
         public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-            button.setText(label);
             isPushed = true;
             selectedRow = row;
             return button;
@@ -98,6 +102,15 @@ public class layout_employeeOrders extends javax.swing.JPanel {
                                 JOptionPane.showMessageDialog(null, "Order rejected successfully.");
                             } else {
                                 JOptionPane.showMessageDialog(null, "Failed to reject order.");
+                            }
+                            displayOrders();
+                        });
+                    } else if (label.equals("Remove")) {
+                        SwingUtilities.invokeLater(() -> {
+                            if (orderController.removeOrder(orderId)) {
+                                JOptionPane.showMessageDialog(null, "Order removed successfully.");
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Failed to remove order.");
                             }
                             displayOrders();
                         });
