@@ -154,7 +154,7 @@ public class layout_login extends javax.swing.JPanel {
         } else if (loginType.equalsIgnoreCase("Admin")) {
             if (AdminController.validateLogin(txt_username, txt_password)) {
                 JOptionPane.showMessageDialog(null, "You have been successfully logged in as Admin", "Logged in!", JOptionPane.INFORMATION_MESSAGE);
-//                App.openLayout("layout_employeeMain", "ShipSharp Employee Main Page");
+                App.openLayout("layout_adminMain", "ShipSharp Admin Main Page");
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid username or password", "Login Failed", JOptionPane.ERROR_MESSAGE);
             } 

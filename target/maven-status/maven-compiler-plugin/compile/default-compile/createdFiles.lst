@@ -1,9 +1,12 @@
 com\group404\y_2s_oop_project\views\layout_registerCustomer$4.class
+com\group404\y_2s_oop_project\views\layout_adminAddEmployees.class
+com\group404\y_2s_oop_project\views\layout_adminMain.class
 com\group404\y_2s_oop_project\controllers\serviceRequestController.class
 com\group404\y_2s_oop_project\controllers\UserController.class
 com\group404\y_2s_oop_project\views\layout_requestService$1.class
 com\group404\y_2s_oop_project\views\layout_employeeOrders$ButtonEditor$1.class
 com\group404\y_2s_oop_project\views\layout_employeeMain.class
+com\group404\y_2s_oop_project\views\layout_adminMain$2.class
 com\group404\y_2s_oop_project\views\layout_login$2.class
 com\group404\y_2s_oop_project\views\layout_registerCustomer$2.class
 com\group404\y_2s_oop_project\views\layout_employeeOrders.class
@@ -29,6 +32,7 @@ com\group404\y_2s_oop_project\util\MailUtil.class
 com\group404\y_2s_oop_project\views\layout_login$1.class
 com\group404\y_2s_oop_project\views\layout_customerOrderSpare$1.class
 com\group404\y_2s_oop_project\views\layout_requestService$2.class
+com\group404\y_2s_oop_project\views\layout_adminMain$1.class
 com\group404\y_2s_oop_project\views\layout_login.class
 com\group404\y_2s_oop_project\views\layout_registerCustomer$1.class
 com\group404\y_2s_oop_project\views\layout_employeeMain$1.class
