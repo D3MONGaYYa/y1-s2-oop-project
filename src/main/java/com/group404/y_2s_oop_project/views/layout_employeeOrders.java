@@ -32,11 +32,27 @@ public class layout_employeeOrders extends javax.swing.JPanel {
         DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 
         for (Object[] order : orders) {
-            Object[] rowData = new Object[order.length + 1]; 
+            Object[] rowData = new Object[10]; 
             System.arraycopy(order, 0, rowData, 0, order.length);
-//            rowData[order.length - 2] = "Accept";
-//            rowData[order.length - 1] = "Reject";
-//            rowData[order.length] = "Remove";
+            
+            if (order[6] instanceof String) {
+                String status = (String) order[6];
+                switch (status) {
+                    case "1":
+                        rowData[6] = "Accepted";
+                        break;
+                    case "2":
+                        rowData[6] = "Declined";
+                        break;
+                    default:
+                        rowData[6] = "Pending"; 
+                        break;
+                }
+            }
+            
+            rowData[7] = "Accept";
+            rowData[8] = "Reject";
+            rowData[9] = "Remove";
             tableModel.addRow(rowData);
         }
 

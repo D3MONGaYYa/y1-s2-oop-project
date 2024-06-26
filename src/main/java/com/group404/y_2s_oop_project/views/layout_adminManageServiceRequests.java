@@ -34,7 +34,10 @@ public class layout_adminManageServiceRequests extends javax.swing.JPanel {
         DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 
         for (Object[] request : requests) {
-            tableModel.addRow(request);
+            Object[] rowData = new Object[8];
+            System.arraycopy(request, 0, rowData, 0, request.length);
+            rowData[7] = "Allocate"; 
+            tableModel.addRow(rowData);
         }
         
         
