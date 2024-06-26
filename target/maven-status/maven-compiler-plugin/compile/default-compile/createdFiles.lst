@@ -20,6 +20,7 @@ com\group404\y_2s_oop_project\App.class
 com\group404\y_2s_oop_project\views\layout_employeeOrders$ButtonEditor.class
 com\group404\y_2s_oop_project\views\layout_customerOrderSpare$2.class
 com\group404\y_2s_oop_project\util\DatabaseUtil.class
+com\group404\y_2s_oop_project\views\layout_adminAddEmployees$1.class
 com\group404\y_2s_oop_project\views\layout_employeeMain$2.class
 com\group404\y_2s_oop_project\util\MailUtil$1.class
 com\group404\y_2s_oop_project\views\layout_registerCustomer.class
