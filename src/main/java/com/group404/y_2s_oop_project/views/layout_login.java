@@ -10,6 +10,7 @@ import javax.swing.*;
 import com.group404.y_2s_oop_project.App;
 import com.group404.y_2s_oop_project.controllers.UserController;
 import com.group404.y_2s_oop_project.controllers.EmployeeController;
+import com.group404.y_2s_oop_project.controllers.AdminController;
 
 /**
  *
@@ -136,22 +137,27 @@ public class layout_login extends javax.swing.JPanel {
         String txt_password = input_password.getText();
         String loginType = String.valueOf(input_role.getSelectedItem());
         
-        if (loginType == "Customer") {
+        if ( loginType.equalsIgnoreCase("Customer")) {
             if (UserController.validateLogin(txt_username, txt_password)) {
                 JOptionPane.showMessageDialog(null, "You have been successfully logged in as Customer", "Logged in!", JOptionPane.INFORMATION_MESSAGE);
                 App.openLayout("layout_customerMain", "ShipSharp Main Page");
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid username or password", "Login Failed", JOptionPane.ERROR_MESSAGE);
             }  
-        } else if (loginType == "Employee") {
+        } else if (loginType.equalsIgnoreCase("Employee")) {
             if (EmployeeController.validateLogin(txt_username, txt_password)) {
                 JOptionPane.showMessageDialog(null, "You have been successfully logged in as Employee", "Logged in!", JOptionPane.INFORMATION_MESSAGE);
                 App.openLayout("layout_employeeMain", "ShipSharp Employee Main Page");
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid username or password", "Login Failed", JOptionPane.ERROR_MESSAGE);
             } 
-        } else if (loginType == "Admin") {
-            
+        } else if (loginType.equalsIgnoreCase("Admin")) {
+            if (AdminController.validateLogin(txt_username, txt_password)) {
+                JOptionPane.showMessageDialog(null, "You have been successfully logged in as Admin", "Logged in!", JOptionPane.INFORMATION_MESSAGE);
+//                App.openLayout("layout_employeeMain", "ShipSharp Employee Main Page");
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid username or password", "Login Failed", JOptionPane.ERROR_MESSAGE);
+            } 
         } else {
             JOptionPane.showMessageDialog(null, "Invalid login type", "Login Failed", JOptionPane.ERROR_MESSAGE);
         }

@@ -10,6 +10,7 @@ com\group404\y_2s_oop_project\views\layout_employeeOrders.class
 com\group404\y_2s_oop_project\views\layout_customerOrderSpare.class
 com\group404\y_2s_oop_project\views\layout_employeeOrders$1.class
 com\group404\y_2s_oop_project\views\layout_customerMain.class
+com\group404\y_2s_oop_project\controllers\AdminController.class
 com\group404\y_2s_oop_project\views\layout_requestService.class
 com\group404\y_2s_oop_project\views\layout_employeeOrders$2.class
 com\group404\y_2s_oop_project\App.class
