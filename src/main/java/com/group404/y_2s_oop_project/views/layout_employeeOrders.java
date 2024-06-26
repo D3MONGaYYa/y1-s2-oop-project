@@ -34,6 +34,9 @@ public class layout_employeeOrders extends javax.swing.JPanel {
         for (Object[] order : orders) {
             Object[] rowData = new Object[order.length + 1]; 
             System.arraycopy(order, 0, rowData, 0, order.length);
+//            rowData[order.length - 2] = "Accept";
+//            rowData[order.length - 1] = "Reject";
+//            rowData[order.length] = "Remove";
             tableModel.addRow(rowData);
         }
 
@@ -54,7 +57,7 @@ public class layout_employeeOrders extends javax.swing.JPanel {
         }
         
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-            setText((value == null) ? "11" : value.toString());
+            setText((value == null) ? "" : value.toString());
             return this;
         }
     }
@@ -85,7 +88,7 @@ public class layout_employeeOrders extends javax.swing.JPanel {
 
         public Object getCellEditorValue() {
             if (isPushed) {
-                if (selectedRow != -1) { // Ensure a valid row is selected
+                if (selectedRow != -1) { 
                     int orderId = (int) tbl_orders.getValueAt(selectedRow, 0);
                     if (label.equals("Accept")) {
                         SwingUtilities.invokeLater(() -> {

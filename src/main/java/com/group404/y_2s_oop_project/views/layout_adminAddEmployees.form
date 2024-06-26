@@ -39,7 +39,7 @@
                                   <Component id="txt_username" alignment="0" min="-2" pref="286" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="141" max="32767" attributes="0"/>
-                              <Component id="jButton1" min="-2" pref="262" max="-2" attributes="0"/>
+                              <Component id="btn_addNewEmployee" min="-2" pref="262" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -68,7 +68,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txt_email" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jButton1" min="-2" pref="70" max="-2" attributes="0"/>
+                  <Component id="btn_addNewEmployee" min="-2" pref="70" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
@@ -148,7 +148,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txt_password">
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btn_addNewEmployee">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="66" red="0" type="rgb"/>
@@ -162,7 +162,7 @@
         <Property name="text" type="java.lang.String" value="ADD EMPLOYEE"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_addNewEmployeeActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

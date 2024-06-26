@@ -4,7 +4,9 @@
  */
 package com.group404.y_2s_oop_project.views;
 
+import com.group404.y_2s_oop_project.App;
 import javax.swing.JOptionPane;
+import com.group404.y_2s_oop_project.controllers.EmployeeController;
 
 /**
  *
@@ -38,7 +40,7 @@ public class layout_adminAddEmployees extends javax.swing.JPanel {
         txt_email = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txt_password = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btn_addNewEmployee = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(731, 88));
@@ -69,13 +71,13 @@ public class layout_adminAddEmployees extends javax.swing.JPanel {
 
         jLabel4.setText("Employee Password:");
 
-        jButton1.setBackground(new java.awt.Color(0, 102, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("ADD EMPLOYEE");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_addNewEmployee.setBackground(new java.awt.Color(0, 102, 255));
+        btn_addNewEmployee.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btn_addNewEmployee.setForeground(new java.awt.Color(255, 255, 255));
+        btn_addNewEmployee.setText("ADD EMPLOYEE");
+        btn_addNewEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_addNewEmployeeActionPerformed(evt);
             }
         });
 
@@ -104,7 +106,7 @@ public class layout_adminAddEmployees extends javax.swing.JPanel {
                                     .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txt_username, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(btn_addNewEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(96, 96, 96))
         );
         layout.setVerticalGroup(
@@ -126,7 +128,7 @@ public class layout_adminAddEmployees extends javax.swing.JPanel {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_addNewEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -135,21 +137,23 @@ public class layout_adminAddEmployees extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_addNewEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addNewEmployeeActionPerformed
         String input_email = txt_email.getText();
         String input_fullname = txt_fullname.getText();
         String input_password = txt_password.getText();
         String input_username = txt_username.getText();
         
-        JOptionPane.showMessageDialog(null, input_email);
-        JOptionPane.showMessageDialog(null, input_fullname);
-        JOptionPane.showMessageDialog(null, input_password);
-        JOptionPane.showMessageDialog(null, input_username);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        if(EmployeeController.addNewEmployee(input_email, input_username, input_password, input_fullname)){
+            JOptionPane.showMessageDialog(null, "Employee Added ! ", "Employee Added", JOptionPane.INFORMATION_MESSAGE);
+            App.openLayout("layout_adminEmployeeList", "Employee List");
+        } else {
+            JOptionPane.showMessageDialog(null, "Employee Added Failed! ", "Employee Added Failed", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_addNewEmployeeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btn_addNewEmployee;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

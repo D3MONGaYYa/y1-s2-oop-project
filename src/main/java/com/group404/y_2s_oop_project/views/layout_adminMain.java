@@ -105,19 +105,17 @@ public class layout_adminMain extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_employeeManagmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_employeeManagmentActionPerformed
-        App.openLayout("layout_adminAddEmployees", "Emplyoee Management");
+        App.openLayout("layout_adminAddEmployees", "Add Emplyoee");
     }//GEN-LAST:event_btn_employeeManagmentActionPerformed
 
     private void btn_employeeManagment1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_employeeManagment1ActionPerformed
-        // TODO add your handling code here:
+        App.openLayout("layout_adminEmployeeList", "Emplyoee Management");
     }//GEN-LAST:event_btn_employeeManagment1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_employeeManagment;
     private javax.swing.JButton btn_employeeManagment1;
-    private javax.swing.JButton btn_orders;
-    private javax.swing.JButton btn_orders1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel welcomeText;
     // End of variables declaration//GEN-END:variables
