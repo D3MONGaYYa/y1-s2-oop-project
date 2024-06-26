@@ -41,8 +41,8 @@ public class AdminController {
             return null;
         }
     }
-    public static boolean validateLogin(String username, String password) {
-        String query = "SELECT `emp_id`, `emp_email`, `emp_username`, `emp_password`, `emp_fullname`, `emp_addedOn` FROM employees WHERE emp_username = ?";
+    public static boolean validateAdminLogin(String username, String password) {
+        String query = "SELECT `admin_id`, `admin_email`, `admin_username`, `admin_password`, `admin_fullname`, `admin_createdOn` FROM admins WHERE admin_username = ?";
 
         try (Connection connection = DatabaseUtil.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
@@ -51,11 +51,11 @@ public class AdminController {
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-                String storedPasswordHash = resultSet.getString("emp_password");
+                String storedPasswordHash = resultSet.getString("admin_password");
                 String enteredPasswordHash = hashPassword(password);
 
                 if (storedPasswordHash.equals(enteredPasswordHash)) {
-                    loggedInUsername = username;
+                    loggedInAdminUsername = username;
                     return true;
                 } else {
                     return false;
