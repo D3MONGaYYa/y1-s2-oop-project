@@ -85,6 +85,18 @@ public class App {
                 layout = new layout_employeeMyJobs();
                 break;
                 
+            case "layout_employeeAddSupplier":
+                layout = new layout_employeeAddSupplier();
+                break;
+                
+            case "layout_employeeSupplierList":
+                layout = new layout_employeeSupplierList();
+                break;
+               
+            case "layout_employeeAddItemsToSupplier":
+                layout = new layout_employeeAddItemsToSupplier();
+                break;
+                
             default:
                 System.err.println("Layout not found: " + layoutName);
                 return;

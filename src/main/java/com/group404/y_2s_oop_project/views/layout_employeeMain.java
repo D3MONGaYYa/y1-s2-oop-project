@@ -32,6 +32,9 @@ public class layout_employeeMain extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         headerText = new javax.swing.JLabel();
         btn_orders = new javax.swing.JButton();
+        btn_addSupplier = new javax.swing.JButton();
+        btn_myJobs2 = new javax.swing.JButton();
+        btn_addItemsToSuppleir = new javax.swing.JButton();
 
         btn_myJobs.setBackground(new java.awt.Color(153, 153, 0));
         btn_myJobs.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -56,7 +59,7 @@ public class layout_employeeMain extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(185, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(headerText)
                 .addGap(169, 169, 169))
         );
@@ -76,37 +79,79 @@ public class layout_employeeMain extends javax.swing.JPanel {
             }
         });
 
+        btn_addSupplier.setBackground(new java.awt.Color(153, 153, 0));
+        btn_addSupplier.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btn_addSupplier.setForeground(new java.awt.Color(255, 255, 255));
+        btn_addSupplier.setText("ADD SUPPLIER");
+        btn_addSupplier.setToolTipText("");
+        btn_addSupplier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_addSupplierActionPerformed(evt);
+            }
+        });
+
+        btn_myJobs2.setBackground(new java.awt.Color(153, 153, 0));
+        btn_myJobs2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btn_myJobs2.setForeground(new java.awt.Color(255, 255, 255));
+        btn_myJobs2.setText("MANAGE SUPPLIERS");
+        btn_myJobs2.setToolTipText("");
+        btn_myJobs2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_myJobs2ActionPerformed(evt);
+            }
+        });
+
+        btn_addItemsToSuppleir.setBackground(new java.awt.Color(153, 153, 0));
+        btn_addItemsToSuppleir.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btn_addItemsToSuppleir.setForeground(new java.awt.Color(255, 255, 255));
+        btn_addItemsToSuppleir.setText("ALLOCATE ITEMS TO SUPPLIERS");
+        btn_addItemsToSuppleir.setToolTipText("");
+        btn_addItemsToSuppleir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_addItemsToSuppleirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 811, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 859, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(btn_orders, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_myJobs, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_myJobs2)
+                        .addGap(0, 39, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_myJobs, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(53, 53, 53)
-                    .addComponent(btn_orders, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(548, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(154, 154, 154)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_addItemsToSuppleir, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_addSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(btn_myJobs, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(126, Short.MAX_VALUE)
-                    .addComponent(btn_orders, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(40, 40, 40)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_orders)
+                    .addComponent(btn_myJobs)
+                    .addComponent(btn_myJobs2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_addSupplier)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_addItemsToSuppleir)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -118,9 +163,24 @@ public class layout_employeeMain extends javax.swing.JPanel {
         App.openLayout("layout_employeeOrders", "Order Spare Parts");
     }//GEN-LAST:event_btn_ordersActionPerformed
 
+    private void btn_addSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addSupplierActionPerformed
+        App.openLayout("layout_employeeAddSupplier", "Add Supplier");
+    }//GEN-LAST:event_btn_addSupplierActionPerformed
+
+    private void btn_myJobs2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_myJobs2ActionPerformed
+        App.openLayout("layout_employeeSupplierList", "Supplier List");
+    }//GEN-LAST:event_btn_myJobs2ActionPerformed
+
+    private void btn_addItemsToSuppleirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addItemsToSuppleirActionPerformed
+        App.openLayout("layout_employeeAddItemsToSupplier", "Allocate Items To Supplier");
+    }//GEN-LAST:event_btn_addItemsToSuppleirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_addItemsToSuppleir;
+    private javax.swing.JButton btn_addSupplier;
     private javax.swing.JButton btn_myJobs;
+    private javax.swing.JButton btn_myJobs2;
     private javax.swing.JButton btn_orders;
     private javax.swing.JLabel headerText;
     private javax.swing.JPanel jPanel1;
