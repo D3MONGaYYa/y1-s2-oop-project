@@ -7,6 +7,7 @@ package com.group404.y_2s_oop_project.controllers;
 import com.group404.y_2s_oop_project.util.DatabaseUtil;
 import com.group404.y_2s_oop_project.util.MailUtil;
 import com.group404.y_2s_oop_project.controllers.UserController;
+import com.group404.y_2s_oop_project.util.MailUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -65,7 +66,7 @@ public class serviceRequestController {
         return requests;
     }
     
-    public static boolean allocateEmployeeToRequest(int requestId, int employeeId) {
+    public static boolean allocateEmployeeToRequest(int requestId, int employeeId, String selectedEmployeeEmail, String serviceName, String serviceDesc) {
         String sql = "UPDATE service_requests SET allocated_employee = ? WHERE req_id = ?";
         try (Connection connection = DatabaseUtil.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(sql)) {
@@ -74,6 +75,7 @@ public class serviceRequestController {
             pstmt.setInt(2, requestId);
 
             int rowsUpdated = pstmt.executeUpdate();
+            MailUtil.sendServiceAllocated(selectedEmployeeEmail, serviceName, serviceDesc);
             return rowsUpdated > 0;
 
         } catch (SQLException e) {

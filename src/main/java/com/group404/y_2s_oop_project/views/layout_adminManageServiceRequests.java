@@ -4,6 +4,7 @@
  */
 package com.group404.y_2s_oop_project.views;
 
+import com.group404.y_2s_oop_project.App;
 import com.group404.y_2s_oop_project.controllers.serviceRequestController;
 import com.group404.y_2s_oop_project.controllers.EmployeeController;
 import javax.swing.*;
@@ -88,6 +89,8 @@ public class layout_adminManageServiceRequests extends javax.swing.JPanel {
             if (isPushed) {
                 if (selectedRow != -1) {
                     int requestId = (int) jTable1.getValueAt(selectedRow, 0);
+                    String serviceName = (String) jTable1.getValueAt(selectedRow, 2);
+                    String serviceDesc = (String) jTable1.getValueAt(selectedRow, 3);
 
                     if (label.equals("Allocate")) {
                         SwingUtilities.invokeLater(() -> {
@@ -106,14 +109,16 @@ public class layout_adminManageServiceRequests extends javax.swing.JPanel {
                                 String selectedFullName = (String) employeeComboBox.getSelectedItem();
 
                                 int selectedEmployeeId = -1;
+                                String selectedEmployeeEmail = "";
                                 for (Object[] employee : employees) {
                                     if (selectedFullName.equals(employee[3].toString())) { 
                                         selectedEmployeeId = (int) employee[0];
+                                        selectedEmployeeEmail = (String) employee[1];
                                         break;
                                     }
                                 }
 
-                                if (selectedEmployeeId != -1 && serviceRequestController.allocateEmployeeToRequest(requestId, selectedEmployeeId)) {
+                                if (selectedEmployeeId != -1 && serviceRequestController.allocateEmployeeToRequest(requestId, selectedEmployeeId, selectedEmployeeEmail, serviceName, serviceDesc)) {
                                     JOptionPane.showMessageDialog(null, "Employee allocated successfully.");
                                     displayRequests(); 
                                 } else {
@@ -151,6 +156,7 @@ public class layout_adminManageServiceRequests extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         welcomeText = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -161,18 +167,31 @@ public class layout_adminManageServiceRequests extends javax.swing.JPanel {
         welcomeText.setForeground(new java.awt.Color(255, 255, 255));
         welcomeText.setText("Service Requests");
 
+        jButton1.setText("Main Menu");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(273, 273, 273)
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addGap(179, 179, 179)
                 .addComponent(welcomeText)
-                .addContainerGap(278, Short.MAX_VALUE))
+                .addContainerGap(275, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(welcomeText, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -207,15 +226,16 @@ public class layout_adminManageServiceRequests extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        App.openLayout("layout_adminMain", "Admin Main Menu");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel welcomeText;
-    private javax.swing.JLabel welcomeText1;
-    private javax.swing.JLabel welcomeText2;
     // End of variables declaration//GEN-END:variables
 }

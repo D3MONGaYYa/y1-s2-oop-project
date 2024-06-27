@@ -90,5 +90,31 @@ public class MailUtil {
             e.printStackTrace();
         }
     }
+    
+    public static void sendServiceAllocated(String toEmail, String service, String desc) {
+        try {
+            Message message = new MimeMessage(session);
+
+            message.setFrom(new InternetAddress(USERNAME, "ShipSharp ADMIN"));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
+            message.setSubject("Service Allocated");
+
+            String msgContent = "Your have allocated for a new service !!! \n\n"
+                    + "Service: " + service + "\n"
+                    + "Description: " + desc + "\n\n"
+                    + "Thank you for being staff of our company.";
+
+            message.setText(msgContent);
+
+            Transport.send(message);
+
+            System.out.println("Service request email sent successfully to " + toEmail);
+
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        } catch (java.io.UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

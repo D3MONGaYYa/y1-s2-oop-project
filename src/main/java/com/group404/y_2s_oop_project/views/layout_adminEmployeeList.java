@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.group404.y_2s_oop_project.views;
+
+import com.group404.y_2s_oop_project.App;
 import com.group404.y_2s_oop_project.controllers.EmployeeController;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -164,6 +166,7 @@ public class layout_adminEmployeeList extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         welcomeText = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_employeeList = new javax.swing.JTable();
 
@@ -174,18 +177,31 @@ public class layout_adminEmployeeList extends javax.swing.JPanel {
         welcomeText.setForeground(new java.awt.Color(255, 255, 255));
         welcomeText.setText("Employee List");
 
+        jButton1.setText("Main Menu");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(264, 264, 264)
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addGap(161, 161, 161)
                 .addComponent(welcomeText)
-                .addContainerGap(245, Short.MAX_VALUE))
+                .addContainerGap(251, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(welcomeText, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
 
         table_employeeList.setModel(new javax.swing.table.DefaultTableModel(
@@ -220,8 +236,13 @@ public class layout_adminEmployeeList extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        App.openLayout("layout_adminMain", "Admin Main Menu");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table_employeeList;
