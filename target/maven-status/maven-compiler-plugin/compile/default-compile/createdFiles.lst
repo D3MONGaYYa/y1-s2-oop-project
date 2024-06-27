@@ -57,6 +57,7 @@ com\group404\y_2s_oop_project\views\layout_adminMain$1.class
 com\group404\y_2s_oop_project\views\layout_adminManageServiceRequests$1.class
 com\group404\y_2s_oop_project\views\layout_login.class
 com\group404\y_2s_oop_project\views\layout_employeeMyJobs.class
+com\group404\y_2s_oop_project\views\layout_employeeMyJobs$4.class
 com\group404\y_2s_oop_project\views\layout_customerMain$2.class
 com\group404\y_2s_oop_project\views\layout_customerOrderSpare$ButtonEditor$1.class
 com\group404\y_2s_oop_project\views\layout_adminManageServiceRequests$ButtonEditor.class

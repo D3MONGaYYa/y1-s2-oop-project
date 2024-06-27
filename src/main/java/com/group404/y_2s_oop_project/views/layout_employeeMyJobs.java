@@ -69,7 +69,7 @@ public class layout_employeeMyJobs extends javax.swing.JPanel {
         JOB_NAME = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         JOB_DESCRIPTION = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btn_markJobDone = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 0));
         jPanel1.setPreferredSize(new java.awt.Dimension(731, 88));
@@ -92,7 +92,7 @@ public class layout_employeeMyJobs extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(headerText)
                 .addGap(107, 107, 107))
         );
@@ -127,8 +127,13 @@ public class layout_employeeMyJobs extends javax.swing.JPanel {
 
         JOB_DESCRIPTION.setText("JOB_DESCRIPTION");
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jButton2.setText("Mark Job as DONE");
+        btn_markJobDone.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        btn_markJobDone.setText("Mark Job as DONE");
+        btn_markJobDone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_markJobDoneActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -136,7 +141,7 @@ public class layout_employeeMyJobs extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 813, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 817, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(69, 69, 69)
@@ -146,12 +151,15 @@ public class layout_employeeMyJobs extends javax.swing.JPanel {
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(JOB_DESCRIPTION)
                             .addComponent(JOB_NAME)
-                            .addComponent(JOB_LIST, 0, 646, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(JOB_LIST, javax.swing.GroupLayout.PREFERRED_SIZE, 646, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_markJobDone, javax.swing.GroupLayout.PREFERRED_SIZE, 646, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(87, 87, 87))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,9 +178,9 @@ public class layout_employeeMyJobs extends javax.swing.JPanel {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(JOB_DESCRIPTION)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(36, 36, 36))
+                .addGap(30, 30, 30)
+                .addComponent(btn_markJobDone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(24, 24, 24))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -189,6 +197,28 @@ public class layout_employeeMyJobs extends javax.swing.JPanel {
         String selectedJob = (String) comboBox.getSelectedItem();
         updateJobDetails(selectedJob);
     }//GEN-LAST:event_JOB_LISTItemStateChanged
+
+    private void btn_markJobDoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_markJobDoneActionPerformed
+        String selectedJob = (String) JOB_LIST.getSelectedItem();
+        if (jobDetailsMap.containsKey(selectedJob)) {
+            Object[] jobDetails = jobDetailsMap.get(selectedJob);
+            int jobId = (int) jobDetails[0];
+            
+            if(serviceRequestController.isJobDone(jobId)){
+                JOptionPane.showMessageDialog(null, "Job already DONE !");
+                return;
+            }
+            
+            if(serviceRequestController.markJobAsDone(jobId)){
+                JOptionPane.showMessageDialog(null, "Job Marked as DONE and Customer Informed about the action !");
+                displayAllocatedJobs();
+            } else {
+                JOptionPane.showMessageDialog(null, "Job updating failed !");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No job selected !");
+        }
+    }//GEN-LAST:event_btn_markJobDoneActionPerformed
 
     private void updateJobDetails(String selectedJob) {
         if (jobDetailsMap.containsKey(selectedJob)) {
@@ -208,9 +238,9 @@ public class layout_employeeMyJobs extends javax.swing.JPanel {
     private javax.swing.JLabel JOB_DESCRIPTION;
     private javax.swing.JComboBox<String> JOB_LIST;
     private javax.swing.JLabel JOB_NAME;
+    private javax.swing.JButton btn_markJobDone;
     private javax.swing.JLabel headerText;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

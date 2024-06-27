@@ -116,5 +116,31 @@ public class MailUtil {
             e.printStackTrace();
         }
     }
+    
+    public static void sendJobDone(String toEmail, String service, String desc) {
+        try {
+            Message message = new MimeMessage(session);
+
+            message.setFrom(new InternetAddress(USERNAME, "ShipSharp ADMIN"));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
+            message.setSubject("Job Done");
+
+            String msgContent = "Your service is marked as done  !!! \n\n"
+                    + "Service: " + service + "\n"
+                    + "Description: " + desc + "\n\n"
+                    + "Your ship is raedy, thanks for using our services";
+
+            message.setText(msgContent);
+
+            Transport.send(message);
+
+            System.out.println("Service request email sent successfully to " + toEmail);
+
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        } catch (java.io.UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

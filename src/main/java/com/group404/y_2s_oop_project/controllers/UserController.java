@@ -27,6 +27,27 @@ public class UserController {
         return getUserData("customerEmail");
     }
     
+    public static String getUserDataByAdmin(String element, String user) {
+
+        String query = "SELECT * FROM customers WHERE customerUsername = ?";
+
+        try (Connection connection = DatabaseUtil.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, user);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                return resultSet.getString(element);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null; 
+    }
+    
     public static String getUserData(String element) {
         if (loggedInUsername == null) {
             return null; 
