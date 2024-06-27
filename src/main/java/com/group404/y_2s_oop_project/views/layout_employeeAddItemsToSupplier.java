@@ -6,6 +6,7 @@ package com.group404.y_2s_oop_project.views;
 
 import com.group404.y_2s_oop_project.App;
 import com.group404.y_2s_oop_project.controllers.SupplierController;
+import com.group404.y_2s_oop_project.controllers.serviceRequestController;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +24,7 @@ public class layout_employeeAddItemsToSupplier extends javax.swing.JPanel {
     public layout_employeeAddItemsToSupplier() {
         initComponents();
         setupSuppliers();
+        updateProdList();
     }
     
     private void setupSuppliers() {
@@ -38,6 +40,20 @@ public class layout_employeeAddItemsToSupplier extends javax.swing.JPanel {
 
         SUPPLIER_LIST.repaint();
         SUPPLIER_LIST.revalidate();
+    }
+    
+    private void updateProdList() {
+        List<Object[]> allocatedJobs = serviceRequestController.fetchAllocatedJobs();
+        drop_prodList.removeAllItems();
+
+        drop_prodList.addItem("Select product to allocate");
+        for (Object[] job : allocatedJobs) {
+            String jobDescription = String.format("%s - %s", job[0], job[2]);
+            drop_prodList.addItem(jobDescription);
+        }
+
+        drop_prodList.repaint();
+        drop_prodList.revalidate();
     }
 
     /**
