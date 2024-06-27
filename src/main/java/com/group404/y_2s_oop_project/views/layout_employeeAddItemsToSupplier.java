@@ -10,12 +10,12 @@ import com.group404.y_2s_oop_project.controllers.SupplierController;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.swing.JComboBox;
 /**
  *
  * @author D3MON
  */
 public class layout_employeeAddItemsToSupplier extends javax.swing.JPanel {
-    private Map<String, Object[]> supplierData = new HashMap<>();
     /**
      * Creates new form layout_employeeAddItemsToSupplier
      */
@@ -31,7 +31,6 @@ public class layout_employeeAddItemsToSupplier extends javax.swing.JPanel {
         SUPPLIER_LIST.addItem("Select supplier to process");
         for (Object[] supplier : supplierList) {
             String supplierListDrop = String.format("%s - %s", supplier[0], supplier[1]);
-            supplierData.put(supplierListDrop, supplier);
             SUPPLIER_LIST.addItem(supplierListDrop);
         }
 
@@ -132,9 +131,14 @@ public class layout_employeeAddItemsToSupplier extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void SUPPLIER_LISTItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SUPPLIER_LISTItemStateChanged
-        
+        JComboBox<String> comboBox = (JComboBox<String>) evt.getSource();
+        String selectedSupplier = (String) comboBox.getSelectedItem();
+        updateSupplierDetails(selectedSupplier);
     }//GEN-LAST:event_SUPPLIER_LISTItemStateChanged
-
+    
+    private void updateSupplierDetails(String selectedSupplier) {
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> SUPPLIER_LIST;
