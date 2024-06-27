@@ -4,6 +4,7 @@
  */
 package com.group404.y_2s_oop_project.controllers;
 import com.group404.y_2s_oop_project.util.DatabaseUtil;
+import com.group404.y_2s_oop_project.util.MailUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -39,6 +40,25 @@ public class ProductController {
         return products;
     }
     
+    public static String getProductNameById(int productId) {
+        String productName = null;
+        
+        try (Connection connection = DatabaseUtil.getConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT productName FROM products WHERE id = ?");
+        ) {
+            statement.setInt(1, productId);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                productName = resultSet.getString("productName");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return productName;
+    }
     
     public static void stockUpdate(String productName, int quantity, int productID) {
         String sql = "UPDATE products SET productStock = productStock - ? WHERE id = ?";
@@ -49,13 +69,43 @@ public class ProductController {
             pstmt.setInt(1, quantity);
             pstmt.setInt(2, productID);
 
-            pstmt.executeUpdate();
-            System.out.println("Stock Updated !");
+            int rowsUpdated = pstmt.executeUpdate();
+            if (rowsUpdated > 0) {
+                int updatedStock = getProductStock(productID);
+                if (updatedStock < 5) {
+                    int supplierID = SupplierController.getSupplierIdOfItem(productID);
+                    MailUtil.sendLowStockWarning(SupplierController.getSupplierEmailById(""+supplierID), productName);
+                }
+                System.out.println("Stock Updated !");
+            } else {
+                System.out.println("Stock Update Failed !");
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Stock Updated Failed !");
+            System.out.println("Stock Update Failed !");
         }
+    }
+
+    private static int getProductStock(int productId) {
+        int currentStock = 0;
+        String sql = "SELECT productStock FROM products WHERE id = ?";
+
+        try (Connection conn = DatabaseUtil.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, productId);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                currentStock = rs.getInt("productStock");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return currentStock;
     }
     
     public static List<Object[]> getUnallocatedProducts() {
@@ -83,6 +133,28 @@ public class ProductController {
         }
 
         return unallocatedProducts;
+    }
+    
+    public static double getProductPriceById(int productId) {
+        double productPrice = 0.0;
+
+        String sql = "SELECT productPrice FROM products WHERE id = ?";
+
+        try (Connection connection = DatabaseUtil.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setInt(1, productId);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                productPrice = resultSet.getDouble("productPrice");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return productPrice;
     }
 
 }

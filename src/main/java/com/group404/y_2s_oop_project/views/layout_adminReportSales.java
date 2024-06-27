@@ -5,6 +5,7 @@
 package com.group404.y_2s_oop_project.views;
 
 import com.group404.y_2s_oop_project.App;
+import com.group404.y_2s_oop_project.controllers.SalesController;
 /**
  *
  * @author D3MON
@@ -16,6 +17,10 @@ public class layout_adminReportSales extends javax.swing.JPanel {
      */
     public layout_adminReportSales() {
         initComponents();
+        CURRENT_DATE.setText("Date & Time : "+ SalesController.getCurrentDateTime());
+        TOTAL_SALES.setText("Total sales : "+Double.toString(SalesController.getTotalSales()));
+        MAX_SELLED_PRODUCT.setText("Max Selling Product : "+SalesController.getHighestSellingProductName());
+        completedOrdersProgress.setValue(SalesController.getPrecentagesOfCompletedOrdersOutof100());
     }
 
     /**
@@ -30,6 +35,10 @@ public class layout_adminReportSales extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         welcomeText = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        CURRENT_DATE = new javax.swing.JLabel();
+        TOTAL_SALES = new javax.swing.JLabel();
+        MAX_SELLED_PRODUCT = new javax.swing.JLabel();
+        completedOrdersProgress = new javax.swing.JProgressBar();
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(731, 88));
@@ -65,6 +74,12 @@ public class layout_adminReportSales extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        CURRENT_DATE.setText("CURRENT_DATE");
+
+        TOTAL_SALES.setText("TOTAL_SALES");
+
+        MAX_SELLED_PRODUCT.setText("MAX_SELLED_PRODUCT");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -73,13 +88,36 @@ public class layout_adminReportSales extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 816, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(CURRENT_DATE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(MAX_SELLED_PRODUCT)
+                        .addGap(195, 195, 195))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(TOTAL_SALES)
+                        .addContainerGap(716, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(64, 64, 64)
+                .addComponent(completedOrdersProgress, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CURRENT_DATE)
+                    .addComponent(MAX_SELLED_PRODUCT))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(TOTAL_SALES)
+                .addGap(46, 46, 46)
+                .addComponent(completedOrdersProgress, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(77, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -89,6 +127,10 @@ public class layout_adminReportSales extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CURRENT_DATE;
+    private javax.swing.JLabel MAX_SELLED_PRODUCT;
+    private javax.swing.JLabel TOTAL_SALES;
+    private javax.swing.JProgressBar completedOrdersProgress;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel welcomeText;

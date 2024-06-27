@@ -108,7 +108,7 @@ public class MailUtil {
 
             Transport.send(message);
 
-            System.out.println("Service request email sent successfully to " + toEmail);
+            System.out.println("Service allocated email sent successfully to " + toEmail);
 
         } catch (MessagingException e) {
             e.printStackTrace();
@@ -134,7 +134,31 @@ public class MailUtil {
 
             Transport.send(message);
 
-            System.out.println("Service request email sent successfully to " + toEmail);
+            System.out.println("Job Done email sent successfully to " + toEmail);
+
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        } catch (java.io.UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public static void sendLowStockWarning(String toEmail, String productName) {
+        try {
+            Message message = new MimeMessage(session);
+
+            message.setFrom(new InternetAddress(USERNAME, "ShipSharp ADMIN"));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
+            message.setSubject("OUT OF STOCK");
+
+            String msgContent = "We are running out of stock on "+productName+" !!! \n\n"
+                    + "Please consider this as soon as possible";
+
+            message.setText(msgContent);
+
+            Transport.send(message);
+
+            System.out.println("Low stock warning email sent successfully to " + toEmail);
 
         } catch (MessagingException e) {
             e.printStackTrace();

@@ -70,7 +70,7 @@ public class SupplierController {
             statement.setString(1, supplierId);
             int rowsDeleted = statement.executeUpdate();
 
-            return rowsDeleted > 0; // Return true if at least one row was deleted
+            return rowsDeleted > 0; 
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -116,23 +116,23 @@ public class SupplierController {
         }
     }
     
-    public static List<Object[]> getAllocatedItems(String supId) {
+    public static List<Object[]> getAllocatedItems(String supplierId) {
         List<Object[]> allocatedItems = new ArrayList<>();
-        String sql = "SELECT `id`, `sup_id`, `item_id` FROM `supplier_items` WHERE sup_id = ?";
 
         try (Connection connection = DatabaseUtil.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
+             PreparedStatement statement = connection.prepareStatement("SELECT si.item_id, p.productName " +
+                     "FROM supplier_items si " +
+                     "JOIN products p ON si.item_id = p.id " +
+                     "WHERE si.sup_id = ?");
+        ) {
+            statement.setString(1, supplierId);
+            ResultSet resultSet = statement.executeQuery();
 
-            statement.setString(1, supId);
+            while (resultSet.next()) {
+                int itemId = resultSet.getInt("item_id");
+                String itemName = resultSet.getString("productName");
 
-            try (ResultSet rs = statement.executeQuery()) {
-                while (rs.next()) {
-                    Object[] item = new Object[3];
-                    item[0] = rs.getInt("id");
-                    item[1] = rs.getString("sup_id");
-                    item[2] = rs.getString("item_id");
-                    allocatedItems.add(item);
-                }
+                allocatedItems.add(new Object[]{itemId, itemName});
             }
 
         } catch (SQLException e) {
@@ -140,5 +140,63 @@ public class SupplierController {
         }
 
         return allocatedItems;
+    }
+    public static boolean allocateItemToSupplier(int supplierId, int itemId) {
+        String sql = "INSERT INTO supplier_items (sup_id, item_id) VALUES (?, ?)";
+
+        try (Connection connection = DatabaseUtil.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setInt(1, supplierId);
+            statement.setInt(2, itemId);
+
+            int rowsAffected = statement.executeUpdate();
+            return rowsAffected > 0; 
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public static String getSupplierEmailById(String supplierId) {
+        String email = null;
+        String sql = "SELECT sup_email FROM suppliers WHERE sup_id = ?";
+
+        try (Connection conn = DatabaseUtil.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, supplierId);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                email = rs.getString("sup_email");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return email;
+    }
+    public static int getSupplierIdOfItem(int itemId) {
+        int supplierId = -1;
+        
+        String sql = "SELECT sup_id FROM supplier_items WHERE item_id = ?";
+        
+        try (Connection conn = DatabaseUtil.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setInt(1, itemId);
+            ResultSet rs = pstmt.executeQuery();
+            
+            if (rs.next()) {
+                supplierId = rs.getInt("sup_id");
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return supplierId;
     }
 }

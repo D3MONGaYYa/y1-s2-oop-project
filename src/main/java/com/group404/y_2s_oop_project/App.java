@@ -97,6 +97,10 @@ public class App {
                 layout = new layout_employeeAddItemsToSupplier();
                 break;
                 
+            case "layout_adminReportSales":
+                layout = new layout_adminReportSales();
+                break;
+                
             default:
                 System.err.println("Layout not found: " + layoutName);
                 return;

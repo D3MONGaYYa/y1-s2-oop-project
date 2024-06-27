@@ -2,8 +2,10 @@ com\group404\y_2s_oop_project\views\layout_registerCustomer$4.class
 com\group404\y_2s_oop_project\views\layout_adminEmployeeList$2.class
 com\group404\y_2s_oop_project\controllers\serviceRequestController.class
 com\group404\y_2s_oop_project\controllers\UserController.class
+com\group404\y_2s_oop_project\views\layout_adminMain$4.class
 com\group404\y_2s_oop_project\controllers\SupplierController.class
 com\group404\y_2s_oop_project\views\layout_requestService$1.class
+com\group404\y_2s_oop_project\views\layout_employeeAddItemsToSupplier$3.class
 com\group404\y_2s_oop_project\views\layout_employeeMain$3.class
 com\group404\y_2s_oop_project\views\layout_employeeMain.class
 com\group404\y_2s_oop_project\views\layout_employeeSupplierList$ButtonRenderer.class

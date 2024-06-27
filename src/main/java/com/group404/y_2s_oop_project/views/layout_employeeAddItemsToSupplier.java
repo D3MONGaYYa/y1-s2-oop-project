@@ -7,10 +7,12 @@ package com.group404.y_2s_oop_project.views;
 import com.group404.y_2s_oop_project.App;
 import com.group404.y_2s_oop_project.controllers.SupplierController;
 import com.group404.y_2s_oop_project.controllers.serviceRequestController;
+import com.group404.y_2s_oop_project.controllers.ProductController;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -18,6 +20,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class layout_employeeAddItemsToSupplier extends javax.swing.JPanel {
     private Map<String, Object[]> supplierDataMap = new HashMap<>();
+    private Map<String, Object[]> productDataMap = new HashMap<>();
+    private String selectedSupplierGlobal;
     /**
      * Creates new form layout_employeeAddItemsToSupplier
      */
@@ -43,13 +47,14 @@ public class layout_employeeAddItemsToSupplier extends javax.swing.JPanel {
     }
     
     private void updateProdList() {
-        List<Object[]> allocatedJobs = serviceRequestController.fetchAllocatedJobs();
+        List<Object[]> products = ProductController.getUnallocatedProducts();
         drop_prodList.removeAllItems();
 
         drop_prodList.addItem("Select product to allocate");
-        for (Object[] job : allocatedJobs) {
-            String jobDescription = String.format("%s - %s", job[0], job[2]);
-            drop_prodList.addItem(jobDescription);
+        for (Object[] product : products) {
+            String prodDescription = String.format("%s - %s", product[0], product[1]);
+            supplierDataMap.put(prodDescription, product);
+            drop_prodList.addItem(prodDescription);
         }
 
         drop_prodList.repaint();
@@ -79,7 +84,7 @@ public class layout_employeeAddItemsToSupplier extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         drop_prodList = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
+        btn_allocateItem = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -157,7 +162,15 @@ public class layout_employeeAddItemsToSupplier extends javax.swing.JPanel {
 
         drop_prodList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton2.setText("jButton2");
+        btn_allocateItem.setBackground(new java.awt.Color(153, 153, 0));
+        btn_allocateItem.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_allocateItem.setForeground(new java.awt.Color(255, 255, 255));
+        btn_allocateItem.setText("ALLOCATE ITEM TO SUPPLIER");
+        btn_allocateItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_allocateItemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -186,12 +199,14 @@ public class layout_employeeAddItemsToSupplier extends javax.swing.JPanel {
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel2)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(3, 3, 3)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jButton2)
-                                            .addComponent(drop_prodList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addGap(6, 6, 6)
+                                        .addComponent(drop_prodList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(289, 289, 289)
+                .addComponent(btn_allocateItem)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,13 +225,13 @@ public class layout_employeeAddItemsToSupplier extends javax.swing.JPanel {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(drop_prodList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addGap(39, 39, 39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_allocateItem)
+                .addGap(33, 33, 33)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -229,18 +244,44 @@ public class layout_employeeAddItemsToSupplier extends javax.swing.JPanel {
         String selectedSupplier = (String) comboBox.getSelectedItem();
         updateSupplierDetails(selectedSupplier);
     }//GEN-LAST:event_SUPPLIER_LISTItemStateChanged
+
+    private void btn_allocateItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_allocateItemActionPerformed
+        String selectedProduct = String.valueOf(drop_prodList.getSelectedItem());
+    
+        if (supplierDataMap.containsKey(selectedProduct)) {
+            Object[] supplierData = supplierDataMap.get(selectedProduct);
+
+            Integer prodID = (Integer) supplierData[0];  
+            String prodName = (String) supplierData[1]; 
+            int selectedSupplierAllocate = Integer.parseInt(selectedSupplierGlobal);
+
+            if(selectedSupplierAllocate != 0) {
+                if(SupplierController.allocateItemToSupplier(selectedSupplierAllocate, prodID)){
+                    JOptionPane.showMessageDialog(null, "Item Allocated To The Supplier.");
+                    App.openLayout("layout_employeeAddItemsToSupplier", "Item allocate to supplier");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed to allocate item to supplier.");
+                }
+            } else {
+                    JOptionPane.showMessageDialog(null, "Please select a supplier");
+            }
+        }
+    }//GEN-LAST:event_btn_allocateItemActionPerformed
+    
     private void updateSupplierDetails(String selectedSupplier) {
         if (supplierDataMap.containsKey(selectedSupplier)) {
             Object[] supplierData = supplierDataMap.get(selectedSupplier);
             String supID = (String) supplierData[0];
             String supName = (String) supplierData[1]; 
             String supStoreName = (String) supplierData[2]; 
-
+            selectedSupplierGlobal = supID;
+            
             txt_supplierName.setText("Supplier Name: " + supName);
             txt_supplierStoreName.setText("Supplier Store Name: " + supStoreName);
 
             updateAllocatedItemList(supID);
         } else {
+            selectedSupplierGlobal = "0";
             txt_supplierName.setText("Supplier Name: NULL");
             txt_supplierStoreName.setText("Supplier Store Name: NULL");
             clearAllocatedItemList();
@@ -250,8 +291,7 @@ public class layout_employeeAddItemsToSupplier extends javax.swing.JPanel {
     private void updateAllocatedItemList(String supplierId) {
         DefaultTableModel tableModel = new DefaultTableModel();
 
-        List<Object[]> allocatedItems = SupplierController.getAllocatedItems(String.valueOf(supplierId));
-        System.out.println(allocatedItems);
+        List<Object[]> allocatedItems = SupplierController.getAllocatedItems(supplierId);
         String[] columnNames = {"Item ID", "Item Name"};
         tableModel.setColumnIdentifiers(columnNames);
 
@@ -278,10 +318,10 @@ public class layout_employeeAddItemsToSupplier extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> SUPPLIER_LIST;
     private javax.swing.JTable allocated_items_table;
+    private javax.swing.JButton btn_allocateItem;
     private javax.swing.JComboBox<String> drop_prodList;
     private javax.swing.JLabel headerText;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

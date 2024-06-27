@@ -31,8 +31,9 @@ public class layout_adminMain extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         welcomeText = new javax.swing.JLabel();
         btn_employeeManagment = new javax.swing.JButton();
-        btn_employeeManagment1 = new javax.swing.JButton();
+        btn_empManagement = new javax.swing.JButton();
         btn_manageServices = new javax.swing.JButton();
+        btn_salesReport = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(731, 88));
@@ -66,14 +67,14 @@ public class layout_adminMain extends javax.swing.JPanel {
             }
         });
 
-        btn_employeeManagment1.setBackground(new java.awt.Color(0, 102, 255));
-        btn_employeeManagment1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btn_employeeManagment1.setForeground(new java.awt.Color(255, 255, 255));
-        btn_employeeManagment1.setText("EMPLOYEE MANAGMENT");
-        btn_employeeManagment1.setToolTipText("");
-        btn_employeeManagment1.addActionListener(new java.awt.event.ActionListener() {
+        btn_empManagement.setBackground(new java.awt.Color(0, 102, 255));
+        btn_empManagement.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btn_empManagement.setForeground(new java.awt.Color(255, 255, 255));
+        btn_empManagement.setText("EMPLOYEE MANAGEMENT");
+        btn_empManagement.setToolTipText("");
+        btn_empManagement.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_employeeManagment1ActionPerformed(evt);
+                btn_empManagementActionPerformed(evt);
             }
         });
 
@@ -85,6 +86,17 @@ public class layout_adminMain extends javax.swing.JPanel {
         btn_manageServices.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_manageServicesActionPerformed(evt);
+            }
+        });
+
+        btn_salesReport.setBackground(new java.awt.Color(0, 102, 255));
+        btn_salesReport.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btn_salesReport.setForeground(new java.awt.Color(255, 255, 255));
+        btn_salesReport.setText("SALES REPORT");
+        btn_salesReport.setToolTipText("");
+        btn_salesReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_salesReportActionPerformed(evt);
             }
         });
 
@@ -100,15 +112,17 @@ public class layout_adminMain extends javax.swing.JPanel {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 61, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btn_employeeManagment1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(471, 471, 471))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btn_employeeManagment, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_manageServices, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(59, 59, 59))))))
+                        .addComponent(btn_employeeManagment, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(83, 83, 83)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_manageServices, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_empManagement))
+                        .addGap(54, 54, 54))))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(77, 77, 77)
+                    .addComponent(btn_salesReport, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(461, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,9 +133,14 @@ public class layout_adminMain extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_employeeManagment)
                     .addComponent(btn_manageServices))
-                .addGap(18, 18, 18)
-                .addComponent(btn_employeeManagment1)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(btn_empManagement)
+                .addContainerGap(68, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(192, Short.MAX_VALUE)
+                    .addComponent(btn_salesReport)
+                    .addGap(69, 69, 69)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -129,19 +148,24 @@ public class layout_adminMain extends javax.swing.JPanel {
         App.openLayout("layout_adminAddEmployees", "Add Emplyoee");
     }//GEN-LAST:event_btn_employeeManagmentActionPerformed
 
-    private void btn_employeeManagment1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_employeeManagment1ActionPerformed
+    private void btn_empManagementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_empManagementActionPerformed
         App.openLayout("layout_adminEmployeeList", "Emplyoee Management");
-    }//GEN-LAST:event_btn_employeeManagment1ActionPerformed
+    }//GEN-LAST:event_btn_empManagementActionPerformed
 
     private void btn_manageServicesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_manageServicesActionPerformed
         App.openLayout("layout_adminManageServiceRequests", "Manage Service Requests");
     }//GEN-LAST:event_btn_manageServicesActionPerformed
 
+    private void btn_salesReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salesReportActionPerformed
+        App.openLayout("layout_adminReportSales", "Sales REPORT");
+    }//GEN-LAST:event_btn_salesReportActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_empManagement;
     private javax.swing.JButton btn_employeeManagment;
-    private javax.swing.JButton btn_employeeManagment1;
     private javax.swing.JButton btn_manageServices;
+    private javax.swing.JButton btn_salesReport;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel welcomeText;
     // End of variables declaration//GEN-END:variables

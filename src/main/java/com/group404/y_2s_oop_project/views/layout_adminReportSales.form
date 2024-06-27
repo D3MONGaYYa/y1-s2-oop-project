@@ -21,6 +21,26 @@
               <Component id="jPanel1" pref="816" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="CURRENT_DATE" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="MAX_SELLED_PRODUCT" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="195" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="TOTAL_SALES" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="716" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+              <Component id="completedOrdersProgress" min="-2" pref="701" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -28,7 +48,16 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="206" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="CURRENT_DATE" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="MAX_SELLED_PRODUCT" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="TOTAL_SALES" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+              <Component id="completedOrdersProgress" min="-2" pref="21" max="-2" attributes="0"/>
+              <EmptySpace pref="77" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -89,5 +118,22 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="CURRENT_DATE">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="CURRENT_DATE"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="TOTAL_SALES">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="TOTAL_SALES"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="MAX_SELLED_PRODUCT">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="MAX_SELLED_PRODUCT"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JProgressBar" name="completedOrdersProgress">
+    </Component>
   </SubComponents>
 </Form>
