@@ -17,6 +17,7 @@ com\group404\y_2s_oop_project\views\layout_customerMain$1.class
 com\group404\y_2s_oop_project\views\layout_employeeMyJobs$3.class
 com\group404\y_2s_oop_project\views\layout_employeeSupplierList$ButtonEditor.class
 com\group404\y_2s_oop_project\views\layout_customerOrderSpare$ButtonEditor.class
+com\group404\y_2s_oop_project\views\layout_employeeAddItemsToSupplier$2.class
 com\group404\y_2s_oop_project\views\layout_login$3.class
 com\group404\y_2s_oop_project\views\layout_employeeMyJobs$2.class
 com\group404\y_2s_oop_project\views\layout_adminEmployeeList$ButtonEditor.class

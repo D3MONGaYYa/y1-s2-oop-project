@@ -16,6 +16,7 @@ import javax.swing.JComboBox;
  * @author D3MON
  */
 public class layout_employeeAddItemsToSupplier extends javax.swing.JPanel {
+    private Map<String, Object[]> supplierDataMap = new HashMap<>();
     /**
      * Creates new form layout_employeeAddItemsToSupplier
      */
@@ -31,6 +32,7 @@ public class layout_employeeAddItemsToSupplier extends javax.swing.JPanel {
         SUPPLIER_LIST.addItem("Select supplier to process");
         for (Object[] supplier : supplierList) {
             String supplierListDrop = String.format("%s - %s", supplier[0], supplier[1]);
+            supplierDataMap.put(supplierListDrop, supplier);
             SUPPLIER_LIST.addItem(supplierListDrop);
         }
 
@@ -52,6 +54,7 @@ public class layout_employeeAddItemsToSupplier extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         SUPPLIER_LIST = new javax.swing.JComboBox<>();
+        txt_supplierName = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 0));
         jPanel1.setPreferredSize(new java.awt.Dimension(731, 88));
@@ -96,6 +99,8 @@ public class layout_employeeAddItemsToSupplier extends javax.swing.JPanel {
             }
         });
 
+        txt_supplierName.setText("Supplier Name : NULL");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -107,10 +112,11 @@ public class layout_employeeAddItemsToSupplier extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(85, 85, 85)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_supplierName)
+                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(SUPPLIER_LIST, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1))
+                        .addComponent(SUPPLIER_LIST, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -122,7 +128,9 @@ public class layout_employeeAddItemsToSupplier extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(SUPPLIER_LIST, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(241, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(txt_supplierName)
+                .addContainerGap(207, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -135,9 +143,15 @@ public class layout_employeeAddItemsToSupplier extends javax.swing.JPanel {
         String selectedSupplier = (String) comboBox.getSelectedItem();
         updateSupplierDetails(selectedSupplier);
     }//GEN-LAST:event_SUPPLIER_LISTItemStateChanged
-    
     private void updateSupplierDetails(String selectedSupplier) {
-        
+        if (supplierDataMap.containsKey(selectedSupplier)) {
+            Object[] supplierData = supplierDataMap.get(selectedSupplier);
+            String supName = (String) supplierData[2];
+            
+            txt_supplierName.setText("Supplier Name : "+supName);
+        } else {
+            txt_supplierName.setText("Supplier Name : NULL");
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -146,5 +160,6 @@ public class layout_employeeAddItemsToSupplier extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel txt_supplierName;
     // End of variables declaration//GEN-END:variables
 }
