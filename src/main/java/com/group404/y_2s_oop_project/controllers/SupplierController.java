@@ -115,4 +115,30 @@ public class SupplierController {
             return false;
         }
     }
+    
+    public static List<Object[]> getAllocatedItems(String supId) {
+        List<Object[]> allocatedItems = new ArrayList<>();
+        String sql = "SELECT `id`, `sup_id`, `item_id` FROM `supplier_items` WHERE sup_id = ?";
+
+        try (Connection connection = DatabaseUtil.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, supId);
+
+            try (ResultSet rs = statement.executeQuery()) {
+                while (rs.next()) {
+                    Object[] item = new Object[3];
+                    item[0] = rs.getInt("id");
+                    item[1] = rs.getString("sup_id");
+                    item[2] = rs.getString("item_id");
+                    allocatedItems.add(item);
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return allocatedItems;
+    }
 }

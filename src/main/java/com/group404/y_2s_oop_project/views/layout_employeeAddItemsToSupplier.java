@@ -5,12 +5,12 @@
 package com.group404.y_2s_oop_project.views;
 
 import com.group404.y_2s_oop_project.App;
-import com.group404.y_2s_oop_project.controllers.serviceRequestController;
 import com.group404.y_2s_oop_project.controllers.SupplierController;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.swing.JComboBox;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author D3MON
@@ -49,12 +49,34 @@ public class layout_employeeAddItemsToSupplier extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         headerText = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         SUPPLIER_LIST = new javax.swing.JComboBox<>();
         txt_supplierName = new javax.swing.JLabel();
+        txt_supplierStoreName = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        allocated_items_table = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        drop_prodList = new javax.swing.JComboBox<>();
+        jButton2 = new javax.swing.JButton();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 0));
         jPanel1.setPreferredSize(new java.awt.Dimension(731, 88));
@@ -101,23 +123,59 @@ public class layout_employeeAddItemsToSupplier extends javax.swing.JPanel {
 
         txt_supplierName.setText("Supplier Name : NULL");
 
+        txt_supplierStoreName.setText("Supplier Store Name:");
+
+        allocated_items_table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Table"
+            }
+        ));
+        jScrollPane2.setViewportView(allocated_items_table);
+
+        jLabel2.setText("ALLOCATED ITEMS");
+
+        jLabel3.setText("ALLOCATE ITEM");
+
+        drop_prodList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jButton2.setText("jButton2");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 825, Short.MAX_VALUE)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(85, 85, 85)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_supplierName)
-                    .addComponent(jLabel1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 825, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(SUPPLIER_LIST, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(85, 85, 85)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txt_supplierStoreName)
+                                    .addComponent(txt_supplierName)
+                                    .addComponent(jLabel1)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(SUPPLIER_LIST, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jScrollPane2)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(333, 333, 333)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(3, 3, 3)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jButton2)
+                                            .addComponent(drop_prodList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,7 +188,19 @@ public class layout_employeeAddItemsToSupplier extends javax.swing.JPanel {
                 .addComponent(SUPPLIER_LIST, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(txt_supplierName)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_supplierStoreName)
+                .addGap(15, 15, 15)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(drop_prodList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addGap(39, 39, 39)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(134, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -146,20 +216,64 @@ public class layout_employeeAddItemsToSupplier extends javax.swing.JPanel {
     private void updateSupplierDetails(String selectedSupplier) {
         if (supplierDataMap.containsKey(selectedSupplier)) {
             Object[] supplierData = supplierDataMap.get(selectedSupplier);
-            String supName = (String) supplierData[2];
-            
-            txt_supplierName.setText("Supplier Name : "+supName);
+            String supID = (String) supplierData[0];
+            String supName = (String) supplierData[1]; 
+            String supStoreName = (String) supplierData[2]; 
+
+            txt_supplierName.setText("Supplier Name: " + supName);
+            txt_supplierStoreName.setText("Supplier Store Name: " + supStoreName);
+
+            updateAllocatedItemList(supID);
         } else {
-            txt_supplierName.setText("Supplier Name : NULL");
+            txt_supplierName.setText("Supplier Name: NULL");
+            txt_supplierStoreName.setText("Supplier Store Name: NULL");
+            clearAllocatedItemList();
         }
     }
+    
+    private void updateAllocatedItemList(String supplierId) {
+        DefaultTableModel tableModel = new DefaultTableModel();
+
+        List<Object[]> allocatedItems = SupplierController.getAllocatedItems(String.valueOf(supplierId));
+        System.out.println(allocatedItems);
+        String[] columnNames = {"Item ID", "Item Name"};
+        tableModel.setColumnIdentifiers(columnNames);
+
+        for (Object[] item : allocatedItems) {
+            tableModel.addRow(item);
+        }
+
+        allocated_items_table.setModel(tableModel);
+
+        allocated_items_table.repaint();
+        allocated_items_table.revalidate();
+    }
+
+    private void clearAllocatedItemList() {
+        DefaultTableModel tableModel = new DefaultTableModel();
+
+        allocated_items_table.setModel(tableModel);
+
+        allocated_items_table.repaint();
+        allocated_items_table.revalidate();
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> SUPPLIER_LIST;
+    private javax.swing.JTable allocated_items_table;
+    private javax.swing.JComboBox<String> drop_prodList;
     private javax.swing.JLabel headerText;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel txt_supplierName;
+    private javax.swing.JLabel txt_supplierStoreName;
     // End of variables declaration//GEN-END:variables
 }
