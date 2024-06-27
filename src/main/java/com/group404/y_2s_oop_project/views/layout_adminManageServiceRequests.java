@@ -108,17 +108,17 @@ public class layout_adminManageServiceRequests extends javax.swing.JPanel {
                             if (option == JOptionPane.OK_OPTION) {
                                 String selectedFullName = (String) employeeComboBox.getSelectedItem();
 
-                                int selectedEmployeeId = -1;
+                                String selectedEmployee = "";
                                 String selectedEmployeeEmail = "";
                                 for (Object[] employee : employees) {
                                     if (selectedFullName.equals(employee[3].toString())) { 
-                                        selectedEmployeeId = (int) employee[0];
+                                        selectedEmployee = (String) employee[2];
                                         selectedEmployeeEmail = (String) employee[1];
                                         break;
                                     }
                                 }
 
-                                if (selectedEmployeeId != -1 && serviceRequestController.allocateEmployeeToRequest(requestId, selectedEmployeeId, selectedEmployeeEmail, serviceName, serviceDesc)) {
+                                if (selectedEmployee != "" && serviceRequestController.allocateEmployeeToRequest(requestId, selectedEmployee, selectedEmployeeEmail, serviceName, serviceDesc)) {
                                     JOptionPane.showMessageDialog(null, "Employee allocated successfully.");
                                     displayRequests(); 
                                 } else {

@@ -7,6 +7,7 @@ package com.group404.y_2s_oop_project.controllers;
 import com.group404.y_2s_oop_project.util.DatabaseUtil;
 import com.group404.y_2s_oop_project.util.MailUtil;
 import com.group404.y_2s_oop_project.controllers.UserController;
+import com.group404.y_2s_oop_project.controllers.EmployeeController;
 import com.group404.y_2s_oop_project.util.MailUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -66,21 +67,70 @@ public class serviceRequestController {
         return requests;
     }
     
-    public static boolean allocateEmployeeToRequest(int requestId, int employeeId, String selectedEmployeeEmail, String serviceName, String serviceDesc) {
+    public static boolean allocateEmployeeToRequest(int requestId, String employee, String selectedEmployeeEmail, String serviceName, String serviceDesc) {
         String sql = "UPDATE service_requests SET allocated_employee = ? WHERE req_id = ?";
         try (Connection connection = DatabaseUtil.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(sql)) {
 
-            pstmt.setInt(1, employeeId);
+            pstmt.setString(1, employee);
             pstmt.setInt(2, requestId);
 
             int rowsUpdated = pstmt.executeUpdate();
             MailUtil.sendServiceAllocated(selectedEmployeeEmail, serviceName, serviceDesc);
             return rowsUpdated > 0;
-
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
     }
+    
+    public static List<Object[]> fetchAllocatedJobs() {
+        System.out.println(EmployeeController.getLoggedInUsername());
+        List<Object[]> requests = new ArrayList<>();
+        String sql = "SELECT `req_id`, `req_customer`, `req_service`, `req_description`, `req_status`, `allocated_employee`, `req_createdOn` FROM `service_requests` WHERE allocated_employee = ?";
+
+        try (Connection connection = DatabaseUtil.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, EmployeeController.getLoggedInUsername());
+            try (ResultSet rs = statement.executeQuery()) {
+                while (rs.next()) {
+                    Object[] request = new Object[7];
+                    request[0] = rs.getInt("req_id");
+                    request[1] = rs.getString("req_customer");
+                    request[2] = rs.getString("req_service");
+                    request[3] = rs.getString("req_description");
+                    request[4] = rs.getString("req_status");
+                    request[5] = rs.getString("allocated_employee");
+                    request[6] = rs.getTimestamp("req_createdOn");
+                    requests.add(request);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return requests;
+    }
+    
+    public static boolean isJobAllocated() {
+        String username = EmployeeController.getLoggedInUsername();
+        String sql = "SELECT COUNT(*) FROM `service_requests` WHERE allocated_employee = ?";
+
+        try (Connection connection = DatabaseUtil.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, username);
+            try (ResultSet rs = statement.executeQuery()) {
+                if (rs.next()) {
+                    int count = rs.getInt(1);
+                    return count > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
 }

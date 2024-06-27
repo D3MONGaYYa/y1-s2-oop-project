@@ -4,6 +4,7 @@ H:\SLIIT\1Y 2S - OOP\projectoop\1y_2s_oop_project\src\main\java\com\group404\y_2
 H:\SLIIT\1Y 2S - OOP\projectoop\1y_2s_oop_project\src\main\java\com\group404\y_2s_oop_project\views\layout_employeeMain.java
 H:\SLIIT\1Y 2S - OOP\projectoop\1y_2s_oop_project\src\main\java\com\group404\y_2s_oop_project\controllers\AdminController.java
 H:\SLIIT\1Y 2S - OOP\projectoop\1y_2s_oop_project\src\main\java\com\group404\y_2s_oop_project\App.java
+H:\SLIIT\1Y 2S - OOP\projectoop\1y_2s_oop_project\src\main\java\com\group404\y_2s_oop_project\views\layout_employeeMyJobs.java
 H:\SLIIT\1Y 2S - OOP\projectoop\1y_2s_oop_project\src\main\java\com\group404\y_2s_oop_project\util\DatabaseUtil.java
 H:\SLIIT\1Y 2S - OOP\projectoop\1y_2s_oop_project\src\main\java\com\group404\y_2s_oop_project\views\layout_adminManageServiceRequests.java
 H:\SLIIT\1Y 2S - OOP\projectoop\1y_2s_oop_project\src\main\java\com\group404\y_2s_oop_project\views\layout_adminEmployeeList.java
@@ -17,4 +18,5 @@ H:\SLIIT\1Y 2S - OOP\projectoop\1y_2s_oop_project\src\main\java\com\group404\y_2
 H:\SLIIT\1Y 2S - OOP\projectoop\1y_2s_oop_project\src\main\java\com\group404\y_2s_oop_project\views\layout_registerCustomer.java
 H:\SLIIT\1Y 2S - OOP\projectoop\1y_2s_oop_project\src\main\java\com\group404\y_2s_oop_project\controllers\UserController.java
 H:\SLIIT\1Y 2S - OOP\projectoop\1y_2s_oop_project\src\main\java\com\group404\y_2s_oop_project\controllers\ProductController.java
+H:\SLIIT\1Y 2S - OOP\projectoop\1y_2s_oop_project\src\main\java\com\group404\y_2s_oop_project\util\ComboItem.java
 H:\SLIIT\1Y 2S - OOP\projectoop\1y_2s_oop_project\src\main\java\com\group404\y_2s_oop_project\views\layout_customerMain.java

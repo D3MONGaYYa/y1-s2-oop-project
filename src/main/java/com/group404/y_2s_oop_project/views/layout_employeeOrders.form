@@ -57,7 +57,7 @@
                   <Component id="btn_refresh" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="214" max="-2" attributes="0"/>
                   <Component id="headerText" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="282" max="32767" attributes="0"/>
+                  <EmptySpace pref="298" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -86,7 +86,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btn_refresh">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Refresh Orders"/>
+            <Property name="text" type="java.lang.String" value="Main Menu"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_refreshActionPerformed"/>

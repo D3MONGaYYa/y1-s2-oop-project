@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.group404.y_2s_oop_project.views;
+import com.group404.y_2s_oop_project.App;
 import com.group404.y_2s_oop_project.controllers.orderController;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -174,7 +175,7 @@ public class layout_employeeOrders extends javax.swing.JPanel {
         headerText.setForeground(new java.awt.Color(255, 255, 255));
         headerText.setText("ORDERS");
 
-        btn_refresh.setText("Refresh Orders");
+        btn_refresh.setText("Main Menu");
         btn_refresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_refreshActionPerformed(evt);
@@ -190,7 +191,7 @@ public class layout_employeeOrders extends javax.swing.JPanel {
                 .addComponent(btn_refresh)
                 .addGap(214, 214, 214)
                 .addComponent(headerText)
-                .addContainerGap(282, Short.MAX_VALUE))
+                .addContainerGap(298, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,7 +259,7 @@ public class layout_employeeOrders extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refreshActionPerformed
-        displayOrders();
+        App.openLayout("layout_employeeMain", "Employee Main Menu");
     }//GEN-LAST:event_btn_refreshActionPerformed
 
 

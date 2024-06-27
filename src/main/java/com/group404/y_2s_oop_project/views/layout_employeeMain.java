@@ -28,19 +28,19 @@ public class layout_employeeMain extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btn_orderSpareParts = new javax.swing.JButton();
+        btn_myJobs = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         headerText = new javax.swing.JLabel();
         btn_orders = new javax.swing.JButton();
 
-        btn_orderSpareParts.setBackground(new java.awt.Color(153, 153, 0));
-        btn_orderSpareParts.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btn_orderSpareParts.setForeground(new java.awt.Color(255, 255, 255));
-        btn_orderSpareParts.setText("INVENTORY");
-        btn_orderSpareParts.setToolTipText("");
-        btn_orderSpareParts.addActionListener(new java.awt.event.ActionListener() {
+        btn_myJobs.setBackground(new java.awt.Color(153, 153, 0));
+        btn_myJobs.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btn_myJobs.setForeground(new java.awt.Color(255, 255, 255));
+        btn_myJobs.setText("ALLOCATED JOBS");
+        btn_myJobs.setToolTipText("");
+        btn_myJobs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_orderSparePartsActionPerformed(evt);
+                btn_myJobsActionPerformed(evt);
             }
         });
 
@@ -86,8 +86,8 @@ public class layout_employeeMain extends javax.swing.JPanel {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_orderSpareParts, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57))
+                .addComponent(btn_myJobs, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(53, 53, 53)
@@ -100,7 +100,7 @@ public class layout_employeeMain extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(btn_orderSpareParts, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_myJobs, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -110,9 +110,9 @@ public class layout_employeeMain extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_orderSparePartsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_orderSparePartsActionPerformed
-        
-    }//GEN-LAST:event_btn_orderSparePartsActionPerformed
+    private void btn_myJobsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_myJobsActionPerformed
+        App.openLayout("layout_employeeMyJobs", "My Allocated Jobs");
+    }//GEN-LAST:event_btn_myJobsActionPerformed
 
     private void btn_ordersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ordersActionPerformed
         App.openLayout("layout_employeeOrders", "Order Spare Parts");
@@ -120,7 +120,7 @@ public class layout_employeeMain extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_orderSpareParts;
+    private javax.swing.JButton btn_myJobs;
     private javax.swing.JButton btn_orders;
     private javax.swing.JLabel headerText;
     private javax.swing.JPanel jPanel1;

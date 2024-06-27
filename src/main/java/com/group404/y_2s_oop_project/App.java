@@ -80,6 +80,10 @@ public class App {
             case "layout_adminManageServiceRequests":
                 layout = new layout_adminManageServiceRequests();
                 break;
+            
+            case "layout_employeeMyJobs":
+                layout = new layout_employeeMyJobs();
+                break;
                 
             default:
                 System.err.println("Layout not found: " + layoutName);
