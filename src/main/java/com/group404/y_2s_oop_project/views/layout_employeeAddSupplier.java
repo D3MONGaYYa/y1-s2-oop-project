@@ -166,7 +166,6 @@ public class layout_employeeAddSupplier extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(null, "Supplier Adding Failed ! ", "An error occured", JOptionPane.ERROR_MESSAGE);
         }
-        
     }//GEN-LAST:event_btn_addSupplierActionPerformed
 
 
